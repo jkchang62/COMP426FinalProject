@@ -1,0 +1,36 @@
+.picture-container {
+    border: 1px solid black;
+    width: 30rem;
+    height: 20rem;
+
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.comment-container {
+    border: 1px solid black;
+    width: 50rem;
+    height: 20rem;
+    
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+
+    overflow: scroll;
+}
+
+.back-button {
+    width: 5rem;
+    height: 5rem;
+    
+    position: absolute;
+    top: 15%;
+    left: 5%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}

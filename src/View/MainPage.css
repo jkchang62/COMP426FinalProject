@@ -1,0 +1,56 @@
+.input-grid {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%); 
+}
+
+.picture-container-one {
+    border: 1px solid black;
+    height: 50%;
+    width: 40%;
+
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%); 
+}
+
+.picture-container-two {
+    border: 1px solid black;
+    height: 50%;
+    width: 40%;
+
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%); 
+}
+
+#card-one {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+#card-two {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.vote-button-one {
+    position: absolute;
+    top: 80%;
+    left: 25%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%); 
+}
+.vote-button-two {
+    position: absolute;
+    top: 80%;
+    left: 75%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%); 
+}
