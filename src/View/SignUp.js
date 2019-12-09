@@ -5,51 +5,59 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Grid, TextField, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
+import { withFirebase } from '../Components/index';
+
+const SignUpPage = () => (
+        <SignUpForm />
+);
 const INITIAL_STATE = {
     email: 'hi',
     passwordOne: 'hi',
     error: null,
-  };
+};
 
-export default class SignUp extends React.Component {
+class SignUp extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.handleSignUp = this.handleSignUp.bind(this);
         this.handleSignIn = this.handleSignIn.bind(this);
-        this.state = { ...INITIAL_STATE};
+        this.state = { ...INITIAL_STATE };
     }
 
     // Add the functionality here
     handleSignUp() {
-      
         //this.state.email = "";
         //this.state.passwordOne = "";
-        console.log(this.state);
-        
-        
+        const { email, passwordOne } = this.state;
+
+        this.props.firebase
+            .CreateUser(email, passwordOne)
+            .then(authUser => {
+                this.setState({ ...INITIAL_STATE });
+            })
+            .catch(error=> {
+                this.setState({ error }); 
+            });
+
     }
 
     handleSignIn() {
         console.log("Signing in");
     }
 
-    handleInputChange(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-    
-      }
+    onChange = event => {
+        this.setState({ [event.target.name]: event.target.value })
+        console.log(this.state);
+    }
 
     render() {
         const {
-            username,
             email,
             passwordOne,
-            passwordTwo,
             error,
-          } = this.state;
-        
+        } = this.state;
+
         return (
             <div>
                 <PrimaryHeader />
@@ -66,25 +74,26 @@ export default class SignUp extends React.Component {
                         className="input-grid"
                     >
 
-                        <Grid item className = "avatar-picture-signup">
-                            <AccountCircleIcon fontSize = "inherit"/>
+                        <Grid item className="avatar-picture-signup">
+                            <AccountCircleIcon fontSize="inherit" />
                         </Grid>
 
                         <Grid item>
-                            <TextField value = {this.state.email} onChange = {this.handleInputChange} className="password-input" label="Email" variant="outlined"> </TextField>
+                            <TextField name="email" onChange={this.onChange} label="Email" variant="outlined"> </TextField>
                         </Grid>
 
                         <Grid item>
-                            <TextField value = {this.state.passwordOne}  className="password-input" label="Password" variant="outlined"> </TextField>
+                            <TextField name="passwordOne" onChange={this.onChange} label="Password" variant="outlined"> </TextField>
                         </Grid>
 
                         <Grid item>
-                            <Button variant="contained" color = "primary" onClick={this.handleSignUp}> SignUp </Button>
+                            <Button variant="contained" color="primary" onClick={this.handleSignUp}> SignUp </Button>
                         </Grid>
 
                         <Link to="/signin">
                             Have an account? Log in!
                         </Link>
+                        {error && <p>{error.message}</p>}
                     </Grid>
 
                 </div>
@@ -92,3 +101,6 @@ export default class SignUp extends React.Component {
         );
     }
 }
+const SignUpForm = withFirebase(SignUp); 
+export default SignUpPage; 
+export {SignUp};

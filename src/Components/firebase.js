@@ -29,6 +29,9 @@ class Firebase {
     
     UserPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
 
+    
+    StateChange = () => this.auth.onAuthStateChanged((user) => {if(user){console.log('helloWOrld')}});
+
 }
 
 export default Firebase; 
