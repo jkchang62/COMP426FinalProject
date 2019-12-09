@@ -5,11 +5,6 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Grid, TextField, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
-const INITIAL_STATE = {
-    email: 'hi',
-    passwordOne: 'hi',
-    error: null,
-  };
 
 export default class SignUp extends React.Component {
 
@@ -17,16 +12,10 @@ export default class SignUp extends React.Component {
         super();
         this.handleSignUp = this.handleSignUp.bind(this);
         this.handleSignIn = this.handleSignIn.bind(this);
-        this.state = { ...INITIAL_STATE};
     }
 
     // Add the functionality here
     handleSignUp() {
-      
-        //this.state.email = "";
-        //this.state.passwordOne = "";
-        console.log(this.state);
-        
         
     }
 
@@ -34,22 +23,7 @@ export default class SignUp extends React.Component {
         console.log("Signing in");
     }
 
-    handleInputChange(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-    
-      }
-
     render() {
-        const {
-            username,
-            email,
-            passwordOne,
-            passwordTwo,
-            error,
-          } = this.state;
-        
         return (
             <div>
                 <PrimaryHeader />
@@ -71,15 +45,23 @@ export default class SignUp extends React.Component {
                         </Grid>
 
                         <Grid item>
-                            <TextField value = {this.state.email} onChange = {this.handleInputChange} className="password-input" label="Email" variant="outlined"> </TextField>
+                            <TextField className="password-input" label="Full name" variant="outlined"> </TextField>
                         </Grid>
 
                         <Grid item>
-                            <TextField value = {this.state.passwordOne}  className="password-input" label="Password" variant="outlined"> </TextField>
+                            <TextField className="password-input" label="Email" variant="outlined"> </TextField>
                         </Grid>
 
                         <Grid item>
-                            <Button variant="contained" color = "primary" onClick={this.handleSignUp}> SignUp </Button>
+                            <TextField className="user-input" label="Username" variant="outlined"> </TextField>
+                        </Grid>
+
+                        <Grid item>
+                            <TextField className="password-input" label="Password" variant="outlined"> </TextField>
+                        </Grid>
+
+                        <Grid item>
+                            <Button variant="contained" color = "primary" > SignUp </Button>
                         </Grid>
 
                         <Link to="/signin">
