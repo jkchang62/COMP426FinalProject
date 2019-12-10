@@ -16,21 +16,22 @@ const firebaseConfig = {
 class Firebase {
     constructor() {
         app.initializeApp(firebaseConfig);
-        this.auth = app.auth(); 
+        this.autho = app.auth(); 
+        this.state = {commentImageURL:null,};
     }
 
-    CreateUser = (email,password) => this.auth.createUserWithEmailAndPassword(email,password);
+    CreateUser = (email,password) => this.autho.createUserWithEmailAndPassword(email,password);
     
-    SignInUser = (email,password) => this.auth.signInWithEmailAndPassword(email,password);
+    SignInUser = (email,password) => this.autho.signInWithEmailAndPassword(email,password);
     
-    SignOutUser = () => this.auth.signOut();
+    SignOutUser = () => this.autho.signOut();
     
-    UserPasswordReset = email => this.auth.sendPasswordResetEmail(email);
+    UserPasswordReset = email => this.autho.sendPasswordResetEmail(email);
     
-    UserPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
+    UserPasswordUpdate = password => this.autho.currentUser.updatePassword(password);
+
 
     
-    StateChange = () => this.auth.onAuthStateChanged((user) => {if(user){console.log('helloWOrld')}});
 
 }
 

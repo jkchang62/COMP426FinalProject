@@ -3,7 +3,7 @@ import './SignIn.css';
 import PrimaryHeader from '../Components/PrimaryHeader'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Grid, TextField, Button } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { Link, withRouter} from 'react-router-dom';
 
 import { withFirebase } from '../Components/index';
 
@@ -27,14 +27,15 @@ class SignUp extends React.Component {
 
     // Add the functionality here
     handleSignUp() {
-        //this.state.email = "";
-        //this.state.passwordOne = "";
+
         const { email, passwordOne } = this.state;
 
         this.props.firebase
             .CreateUser(email, passwordOne)
             .then(authUser => {
                 this.setState({ ...INITIAL_STATE });
+                console.log(authUser);
+                this.props.history.push("/Dashboard");
             })
             .catch(error=> {
                 this.setState({ error }); 

@@ -3,27 +3,61 @@ import './SignIn.css';
 import PrimaryHeader from '../Components/PrimaryHeader'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Grid, TextField, Button } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { Link, withRouter} from 'react-router-dom';
+//import SignUpPage from './SignUp';
+import {withFirebase} from '../Components/index'
 
 
-export default class SignIn extends React.Component {
+const SignInPage = () => (
+        <SignInForm />
+)
 
-    constructor() {
-        super();
-        this.handleSignUp = this.handleSignUp.bind(this);
+const INITIAL_STATE = {
+    email: '',
+    password: '',
+    error: null,
+};
+
+class SignIn extends React.Component {
+
+    constructor(props) {
+        super(props);
         this.handleSignIn = this.handleSignIn.bind(this);
+        this.state = { ...INITIAL_STATE }; 
     }
 
     // Add the functionality here
-    handleSignUp() {
-        console.log("Signing up");
-    }
 
-    handleSignIn() {
+
+    handleSignIn(event) {
         console.log("Signing in");
+        const {email, password } = this.state; 
+        event.preventDefault();
+        this.props.firebase
+            .SignInUser(email, password).then( (authUser) => {
+            this.setState({ ...INITIAL_STATE}); 
+            this.props.history.push("/Dashboard");
+            }).catch(error => {
+                this.setState({ error }); 
+                alert(this.state.error.message);
+            });
+
+    }
+    onChange = event => {
+        this.setState({ [event.target.name]: event.target.value });
+        console.log(this.state);
     }
 
     render() {
+
+        const {
+            email,
+            password,
+            error,
+        } = this.state; 
+
+        const isInvalid = email === '';
+
         return (
             <div>
                 <PrimaryHeader />
@@ -45,16 +79,20 @@ export default class SignIn extends React.Component {
                         </Grid>
 
                         <Grid item>
-                            <TextField className="user-input" label="Username" variant="outlined"> </TextField>
+                            <TextField name="email" className="user-input" label="Username" onChange={this.onChange} variant="outlined"> </TextField>
                         </Grid>
                         <Grid item>
-                            <TextField className="password-input" label="Password" variant="outlined"> </TextField>
+                            <TextField name="password" className="password-input" label="Password" onChange={this.onChange} variant="outlined"> </TextField>
                         </Grid>
 
                         <Grid item>
                             <Link to="/dashboard">
-                                <Button variant="contained" color = "primary"> SignIn </Button>
+                                <Button disable={isInvalid} variant="contained" color = "primary" onClick={this.handleSignIn}> SignIn </Button>
                             </Link>
+                        </Grid>
+
+                        <Grid item >
+                        {error && <p>{error.message}</p>}
                         </Grid>
 
                         <Link to="/signup">
@@ -67,3 +105,7 @@ export default class SignIn extends React.Component {
         );
     }
 }
+
+const SignInForm = withRouter(withFirebase(SignIn));
+export default SignInPage;
+export {SignInForm};
