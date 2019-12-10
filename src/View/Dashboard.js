@@ -56,8 +56,8 @@ class Dashboard extends React.Component {
                         Insert Pictures Here
                     </div>
                     <div>
-                       <p> Naem {this.props.firebase.autho.currentUser.email}
-                       {this.props.firebase.autho.currentUser.uid}
+                       <p> Naem {JSON.parse(window.localStorage.authUser).email}
+                       {/* {this.props.firebase.autho.currentUser.uid} */}
                        </p>
                     </div>
                 </div>

@@ -41,7 +41,7 @@ class Comments extends React.Component {
                 </div>
 
                 <div className="picture-container">
-                <CardMedia class = "myPics" image = {this.props.firebase.state.commentImageURL}>
+                <CardMedia class = "myPics" image= {this.props.firebase.state.commentImageURL} >
                 </CardMedia>
                 </div>
 

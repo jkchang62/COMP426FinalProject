@@ -8,37 +8,17 @@ import MainPage from './View/MainPage';
 import { Route } from 'react-router';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { tsConstructorType } from '@babel/types';
-import {AuthUserContext} from './Components/sessions'
-import { withFirebase} from './Components/index';
+import {highAuthentication} from './Components/sessions'
 import Navigation from './Components/Navigation';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      authUser: null,
-    };
-  }
+function App() {
 
-  componentDidMount() {
-    this.listener = this.props.firebase.autho.onAuthStateChanged(
-      authUser => {
-        authUser ? this.setState({ authUser }) : this.setState({ authUser: null });
-      },
-    );
-  }
-
-  componentWillUnmount() {
-    this.listener();
-  }
-  render() {
     return (
-      <AuthUserContext.Provider value={this.state.authUser}>
         <div className="App">
           <header className="App-header">
             <Router>
-            <Navigation authUser={this.state.authUser} />
+            <Navigation />
             <hr/>
               <Route path={"/mainpage"} component={MainPage} />
               <Route path={"/dashboard"} component={Dashboard} />
@@ -48,9 +28,8 @@ class App extends React.Component {
             </Router>
           </header>
         </div>
-      </AuthUserContext.Provider>
     );
-  }
-}
+  };
 
-export default withFirebase(App);
+
+export default highAuthentication(App);

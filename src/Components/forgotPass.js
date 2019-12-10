@@ -1,34 +1,27 @@
-import React from 'react';
-import './SignIn.css';
-import PrimaryHeader from '../Components/PrimaryHeader'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import { Grid, TextField, Button } from '@material-ui/core';
-import { Link, withRouter} from 'react-router-dom';
-//import SignUpPage from './SignUp';
-import {withFirebase} from '../Components/index'
+import React, {Component} from 'react'; 
+import {Link} from 'react-router-dom';
 
+import {withFirebase} from './index';
 
-const SignInPage = () => (
-        <SignInForm />
-)
+const PasswordPage = () => {
+    <div>
+        <h1>Forgot Password</h1>
+        <PasswordForget />
+    </div>
+}
 
-const INITIAL_STATE = {
+const INITIAL_STATE = { 
     email: '',
-    password: '',
     error: null,
 };
 
-class SignIn extends React.Component {
-
-    constructor(props) {
+class PasswordForgetForm extends react.Component {
+    constructor(props){
         super(props);
-        this.handleSignIn = this.handleSignIn.bind(this);
-        this.state = { ...INITIAL_STATE }; 
+
+        this.state = { ...INITIAL_STATE};
     }
-
-    // Add the functionality here
-
-
+    
     handleSignIn(event) {
         console.log("Signing in");
         const {email, password } = this.state; 
@@ -53,7 +46,6 @@ class SignIn extends React.Component {
 
         const {
             email,
-            password,
             error,
         } = this.state; 
 

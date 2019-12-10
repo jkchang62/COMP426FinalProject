@@ -1,2 +1,3 @@
 import AuthUserContext from './AuthUserContext'; 
-export {AuthUserContext};
+import highAuthentication from './highAuthentication';
+export {AuthUserContext , highAuthentication};
