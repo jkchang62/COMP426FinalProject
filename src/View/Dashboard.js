@@ -7,6 +7,7 @@ import { withFirebase } from '../Components/index';
 import firebase from 'firebase';
 import { CardMedia, CardHeader, Button, Card, Grid } from '@material-ui/core';
 import { Link, withRouter } from 'react-router-dom';
+import DeleteUser1 from '../Components/Delete';
 
 /**
  * View for the dashboard that will be the primary page of the website. Holds two pictures, a vote and comment button, and 
@@ -40,7 +41,6 @@ class Dashboard extends React.Component {
 
         var db = firebase.firestore();
         var usersRef = db.collection("users");
-        var imageRef = db.collection("images");
 
         var query = usersRef.where("email", "==", this.props.firebase.autho.currentUser.email);
 
@@ -90,6 +90,14 @@ class Dashboard extends React.Component {
                             <Button variant="contained" color="primary" onClick={this.handleEdit}> Edit Profile </Button>
                         </Link>
                     </Grid>
+
+                    <Grid item>
+                        <Link to='/MainPage'>
+                            <DeleteUser1 />
+                        </Link>
+                    </Grid>
+
+
 
                     <div className="bio-description-container">
                         <p>Name: {this.state.name}</p>
