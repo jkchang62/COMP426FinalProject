@@ -34,6 +34,7 @@ class MainPage extends React.Component {
 
         this.props.firebase.state.commentImageURL = this.state.imageurl1;
         this.props.firebase.state.currentImageComments = this.state.imagecomments1;
+        this.props.firebase.state.currentImageID = this.state.imageID1;
 
         var db = firebase.firestore();
         var imageRef = db.collection("images");
@@ -56,6 +57,8 @@ class MainPage extends React.Component {
 
         this.props.firebase.state.commentImageURL = this.state.imageurl2;
         this.props.firebase.state.currentImageComments = this.state.imagecomments2;
+        this.props.firebase.state.currentImageID = this.state.imageID2;
+
 
         var db = firebase.firestore();
         var imageRef = db.collection("images");
@@ -87,7 +90,7 @@ class MainPage extends React.Component {
         var db = firebase.firestore();
         var imageRef = db.collection("images");
 
-        let numImages = 200;
+        let numImages = 5;
 
         var query1 = imageRef.where("randomIndex", "==", Math.floor(Math.random() * Math.floor(numImages)))
 

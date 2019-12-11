@@ -18,7 +18,8 @@ class Firebase {
         app.initializeApp(firebaseConfig);
         this.autho = app.auth(); 
         this.state = {commentImageURL:null,
-                        currentImageComments:null,};
+                    currentImageComments:null,
+                    currentImageID: null};
     }
 
     CreateUser = (email,password) => this.autho.createUserWithEmailAndPassword(email,password);
