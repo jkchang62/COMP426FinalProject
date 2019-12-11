@@ -1,7 +1,9 @@
 import { AuthUserContext } from './sessions';
 import React from 'react';
 import {Link} from 'react-router-dom';
+
 import SignOutEvent from './signOut';
+
 
 const Navigation = () => (
 <div>

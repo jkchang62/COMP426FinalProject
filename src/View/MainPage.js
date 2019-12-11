@@ -33,8 +33,8 @@ class MainPage extends React.Component {
     handleVote1(){
 
         this.props.firebase.state.commentImageURL = this.state.imageurl1;
-
-        console.log(this.props.firebase.state.commentImageURL)
+        this.props.firebase.state.currentImageComments = this.state.imagecomments1;
+        this.props.firebase.state.currentImageID = this.state.imageID1;
 
         var db = firebase.firestore();
         var imageRef = db.collection("images");
@@ -56,6 +56,8 @@ class MainPage extends React.Component {
     handleVote2(){
 
         this.props.firebase.state.commentImageURL = this.state.imageurl2;
+        this.props.firebase.state.currentImageComments = this.state.imagecomments2;
+        this.props.firebase.state.currentImageID = this.state.imageID2;
 
         var db = firebase.firestore();
         var imageRef = db.collection("images");
@@ -87,7 +89,8 @@ class MainPage extends React.Component {
         var db = firebase.firestore();
         var imageRef = db.collection("images");
 
-        let numImages = 8;
+
+        let numImages = 5;
 
         var query1 = imageRef.where("randomIndex", "==", Math.floor(Math.random() * Math.floor(numImages)))
 
@@ -145,6 +148,7 @@ class MainPage extends React.Component {
                         <CardHeader title={"Name of the piece: need to add to DB     Artist: " + this.state.imageartist1} />
                         <CardMedia class = "myPics" image = {this.state.imageurl1}>
                         For some reason the images only render if there is a bunch of text in the CardMedia tags but at least we got the images working 🙂    
+
                         </CardMedia>
                         {"Votes: " + this.state.imagevotes1}
                         {"Winning Percentage: " + (this.state.imagevotes1 / this.state.imageappearances1)*100  + "%"}

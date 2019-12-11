@@ -34,7 +34,6 @@ class SignUp extends React.Component {
             .CreateUser(email, passwordOne)
             .then(authUser => {
                 this.setState({ ...INITIAL_STATE });
-
                 var db = firebase.firestore();
                 var userRef = db.collection("users");
     
@@ -52,8 +51,6 @@ class SignUp extends React.Component {
             .catch(error=> {
                 this.setState({ error }); 
             });
-
-
     }
 
     handleSignIn() {
@@ -123,3 +120,4 @@ class SignUp extends React.Component {
 const SignUpForm = withFirebase(SignUp); 
 export default SignUpPage; 
 export {SignUp};
+

@@ -1,3 +1,4 @@
+  
 import React from 'react';
 import './App.css';
 import Dashboard from './View/Dashboard';
@@ -9,6 +10,7 @@ import MainPage from './View/MainPage';
 import { Route } from 'react-router';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { tsConstructorType } from '@babel/types';
+
 import {highAuthentication} from './Components/sessions'
 import Navigation from './Components/Navigation';
 
@@ -35,3 +37,4 @@ function App() {
 
 
 export default highAuthentication(App);
+

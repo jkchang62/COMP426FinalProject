@@ -11,3 +11,4 @@ const SignOutEvent = ({firebase}) => (
 );
 
 export default withFirebase(SignOutEvent); 
+

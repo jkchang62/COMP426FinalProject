@@ -17,7 +17,9 @@ class Firebase {
     constructor() {
         app.initializeApp(firebaseConfig);
         this.autho = app.auth(); 
-        this.state = {commentImageURL:null,};
+        this.state = {commentImageURL:null,
+                    currentImageComments:null,
+                    currentImageID: null};
     }
 
     CreateUser = (email,password) => this.autho.createUserWithEmailAndPassword(email,password);
@@ -30,9 +32,8 @@ class Firebase {
     
     UserPasswordUpdate = password => this.autho.currentUser.updatePassword(password);
 
-
-    
+    StateChange = () => this.autho.onAuthStateChanged((user) => {if(user){console.log('helloWOrld')}});
 
 }
 
-export default Firebase; 
+export default Firebase;

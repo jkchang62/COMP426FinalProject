@@ -9,6 +9,7 @@ import { Link, withRouter} from 'react-router-dom';
 import {withFirebase} from '../Components/index';
 
 
+
 const SignInPage = () => (
         <SignInForm />
 )
@@ -97,6 +98,10 @@ class SignIn extends React.Component {
                             <Button variant="contained" color = "primary"> ForgotPass </Button>
                             </Link>
                         </Grid>
+                        <Grid item >
+                        {error && <p>{error.message}</p>}
+                        </Grid>
+
                         <Grid item >
                         {error && <p>{error.message}</p>}
                         </Grid>
