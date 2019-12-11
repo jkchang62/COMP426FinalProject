@@ -2,7 +2,7 @@ import React from 'react';
 import './SignIn.css';
 import PrimaryHeader from '../Components/PrimaryHeader'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import { Grid, TextField, Button } from '@material-ui/core';
+import { Grid, TextField, Button, Typography } from '@material-ui/core';
 import { Link, withRouter } from 'react-router-dom';
 import { withFirebase } from '../Components/index';
 
@@ -59,8 +59,29 @@ class SignIn extends React.Component {
 
         return (
             <div>
+                <div className="title-box-container">
+
+                    <div className="title-container">
+                        <Typography align="left" color="inherit" variant="h1" id="title">
+                            Project <br /> Modernist
+                        </Typography>
+                    </div>
+
+                    <div className="three-picture-container">
+                        <div className="picture-container1">
+                            <img src='http://hdqwalls.com/wallpapers/beautiful-landscape-nature-scenery-1d.jpg' />
+                        </div>
+                        <div className="picture-container2">
+                            <img src='https://pmunofficial.com//assets/images/3p6-logo.png' />
+                        </div>
+                        <div className="picture-container3">
+                            <img src='http://www.brainscape.com/blog/wp-content/uploads/2015/06/Sanzio_01.jpg' />
+                        </div>
+                    </div>
+
+                </div>
                 <div className="signin-box">
-                    <div className="signin-box-header" />
+                    {/* <div className="signin-box-header" /> */}
                     <Grid
                         container
                         alignContent="center"
@@ -89,7 +110,9 @@ class SignIn extends React.Component {
                         </Grid>
                         <Grid item>
                             <Link to='/forgot'>
-                                <Button variant="contained" color="primary"> ForgotPass </Button>
+                                <div className="forgot-password-container">
+                                    Forgot password?
+                                </div>
                             </Link>
                         </Grid>
                         <Grid item >
