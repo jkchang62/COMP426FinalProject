@@ -5,7 +5,7 @@ a {
 
 .navigation-container {
     position: relative;
-    float: right;
+    left: 70%;
 }
 
 .logo-container {
