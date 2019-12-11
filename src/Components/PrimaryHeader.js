@@ -71,6 +71,9 @@ const SearchAppBar = () => {
         <div className={classes.root}>
             <AppBar position="static">
                 <Toolbar>
+                    <div className = "logo-container">
+                      <img src = 'https://upload.wikimedia.org/wikipedia/en/5/5f/Project_M_logo.png' />
+                    </div>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <SearchIcon />
@@ -100,7 +103,12 @@ const DefaultHeader = () => {
     return (
         <AppBar position="static">
             <Toolbar>
-                <Link to="/SignIn">Sign In</Link>
+                <div className = "logo-container">
+                    <img src = 'https://upload.wikimedia.org/wikipedia/en/5/5f/Project_M_logo.png' />
+                </div>
+                <div className = "sign-in-container">
+                    <Link to="/SignIn">Sign In</Link>
+                </div>
             </Toolbar>
         </AppBar>
     );

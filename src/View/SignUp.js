@@ -1,6 +1,5 @@
 import React from 'react';
 import './SignIn.css';
-import PrimaryHeader from '../Components/PrimaryHeader'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Grid, TextField, Button } from '@material-ui/core';
 import { Link, withRouter} from 'react-router-dom';
@@ -72,8 +71,7 @@ class SignUp extends React.Component {
 
         return (
             <div>
-                <div className="signin-box">
-                    <div className="signin-box-header" />
+                <div className="signup-box">
                     <Grid
                         container
                         alignContent="center"
@@ -104,9 +102,14 @@ class SignUp extends React.Component {
                             <Button variant="contained" color="primary" onClick={this.handleSignUp}> SignUp </Button>
                         </Grid>
 
-                        <Link to="/signin">
-                            Have an account? Log in!
-                        </Link>
+                        <Grid item>
+                            <Link to="/signin">
+                                <div className="sign-in-text">
+                                    Have an account? Log in!
+                                </div>
+                            </Link>
+                        </Grid>
+
                         {error && <p>{error.message}</p>}
                     </Grid>
 

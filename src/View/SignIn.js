@@ -57,7 +57,7 @@ class SignIn extends React.Component {
 
         const isInvalid = email === '';
 
-        return (
+        return (    
             <div>
                 <div className="title-box-container">
 
@@ -72,7 +72,7 @@ class SignIn extends React.Component {
                             <img src='http://hdqwalls.com/wallpapers/beautiful-landscape-nature-scenery-1d.jpg' />
                         </div>
                         <div className="picture-container2">
-                            <img src='https://pmunofficial.com//assets/images/3p6-logo.png' />
+                            <img src='https://cdn.britannica.com/78/43678-050-F4DC8D93/Starry-Night-canvas-Vincent-van-Gogh-New-1889.jpg' />
                         </div>
                         <div className="picture-container3">
                             <img src='http://www.brainscape.com/blog/wp-content/uploads/2015/06/Sanzio_01.jpg' />
@@ -81,7 +81,6 @@ class SignIn extends React.Component {
 
                 </div>
                 <div className="signin-box">
-                    {/* <div className="signin-box-header" /> */}
                     <Grid
                         container
                         alignContent="center"
@@ -112,6 +111,13 @@ class SignIn extends React.Component {
                             <Link to='/forgot'>
                                 <div className="forgot-password-container">
                                     Forgot password?
+                                </div>
+                            </Link>
+                        </Grid>
+                        <Grid item>
+                        <Link to='/signup/'>
+                                <div className="forgot-password-container">
+                                    Create account
                                 </div>
                             </Link>
                         </Grid>

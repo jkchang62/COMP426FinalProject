@@ -111,6 +111,19 @@ img{
     transform: translate(-50%, -50%);
 }
 
+.signup-box {
+    border: 0.5px solid gray;
+    width: 30rem;
+    height: 30rem;
+    border-radius: 10px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
 .signin-box-header {
     border: 1px solid black;
     width: 100%;
@@ -140,6 +153,12 @@ img{
 }
 
 .forgot-password-container {
+    color: #1a73e8;
+    background-color: transparent;
+    font-size: 1rem;
+}
+
+.sign-in-text {
     color: #1a73e8;
     background-color: transparent;
     font-size: 1rem;
