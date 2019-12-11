@@ -14,6 +14,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { Link } from 'react-router-dom';
+import Navigation from './Navigation';
 
 /**
  * Component for the search bar and header 
@@ -173,7 +174,8 @@ export default function PrimarySearchAppBar() {
 
                     <Typography className={classes.title} variant="h6" noWrap>
                         Search User...
-          </Typography>
+                    </Typography>
+
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <SearchIcon />
@@ -189,7 +191,7 @@ export default function PrimarySearchAppBar() {
                     </div>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
-
+                        <Navigation />
                         <AccountCircle />
 
                     </div>

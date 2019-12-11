@@ -57,8 +57,6 @@ class PasswordForgetForm extends React.Component {
 
         return (
             <div>
-                <PrimaryHeader />
-
                 <div className="signin-box">
                     <div className="signin-box-header"/>
                     <Grid

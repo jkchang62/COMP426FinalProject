@@ -14,6 +14,7 @@ import { tsConstructorType } from '@babel/types';
 
 import {highAuthentication} from './Components/sessions'
 import Navigation from './Components/Navigation';
+import PrimaryHeader from './Components/PrimaryHeader.js';
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
         <div className="App">
           <header className="App-header">
             <Router>
-            <Navigation />
+            {/* <PrimaryHeader /> */}
             <hr/>
               <Route path={"/mainpage"} component={MainPage} />
               <Route path={"/dashboard"} component={Dashboard} />
