@@ -5,7 +5,8 @@ import PrimarySearchAppBar from '../Components/PrimarySearchAppBar';
 import SignOutEvent from '../Components/signOut'
 import { withFirebase } from '../Components/index';
 import firebase from 'firebase';
-import { CardMedia, CardHeader, Button, Card } from '@material-ui/core';
+import { CardMedia, CardHeader, Button, Card, Grid } from '@material-ui/core';
+import { Link, withRouter } from 'react-router-dom';
 
 /**
  * View for the dashboard that will be the primary page of the website. Holds two pictures, a vote and comment button, and 
@@ -69,28 +70,10 @@ class Dashboard extends React.Component {
                 bio: bio,
             });
         });
-
-
     }
-
-    //   componentDidMount() {
-    //     this.listener = this.props.firebase.auth.onAuthStateChanged(
-    //       authUser => {
-    //         authUser ? this.setState({ authUser }) : this.setState({ authUser: null });
-    //         this.setState({user: this.props.firebase.auth.currentUser.email});
-    //       },
-    //     );  
-    //   }
-
-    //   componentWillUnmount() {
-    //     this.listener();
-    //   }
 
     render() {
 
-
-
-        console.log(this.state.imageurls);
         return (
 
             <div className="dashboard-container">
@@ -102,6 +85,12 @@ class Dashboard extends React.Component {
                         <AccountCircleIcon fontSize="inherit" />
 
                     </div>
+                    <Grid item>
+                        <Link to='/update'>
+                            <Button variant="contained" color="primary" onClick={this.handleEdit}> Edit Profile </Button>
+                        </Link>
+                    </Grid>
+
                     <div className="bio-description-container">
                         <p>Name: {this.state.name}</p>
                         <p>Bio: {this.state.bio}</p>
@@ -111,6 +100,7 @@ class Dashboard extends React.Component {
                         <p>Password: {this.state.password}</p>
 
                     </div>
+
                 </div>
                 <div className="liked-history-container">
                     <div className="liked-history-title">
@@ -123,11 +113,6 @@ class Dashboard extends React.Component {
                     <div>
                         <p>
                         </p>
-                    </div>
-                    <div>
-                       <p> Naem {JSON.parse(window.localStorage.authUser).email}
-                       {/* {this.props.firebase.autho.currentUser.uid} */}
-                       </p>
                     </div>
                 </div>
             </div>

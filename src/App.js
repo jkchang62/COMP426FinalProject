@@ -5,6 +5,7 @@ import Dashboard from './View/Dashboard';
 import Comments from './View/Comments';
 import SignIn from './View/SignIn';
 import SignUp from './View/SignUp';
+import EditForm from './View/editProfile';
 import forgotPass from './View/forgotPass';
 import MainPage from './View/MainPage';
 import { Route } from 'react-router';
@@ -29,6 +30,7 @@ function App() {
               <Route path={"/signin"} component={SignIn} />
               <Route path={"/comments"} component={Comments} />
               <Route path={"/forgot"} component={forgotPass} />
+              <Route path={"/update"} component={EditForm} />
             </Router>
           </header>
         </div>
