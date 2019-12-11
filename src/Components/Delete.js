@@ -2,13 +2,12 @@ import React from 'react';
 import {withFirebase} from '../Components/index';
 import {Link} from 'react-router-dom';
 
-const SignOutEvent = ({firebase}) => (
+const DeleteUser1 = ({firebase}) => (
     <Link to='/MainPage'>
-    <button type="button" onClick={firebase.SignOutUser}>
+    <button type="button" onClick={firebase.DeleteUser}>
         Sign Out
     </button>
     </Link>
 );
 
-export default withFirebase(SignOutEvent); 
-
+export default withFirebase(DeleteUser1); 

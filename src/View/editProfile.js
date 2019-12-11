@@ -17,6 +17,12 @@ const EditPage = () => (
 class EditForm extends React.Component {
     constructor(props){
         super(props);
+        this.state = {
+            name: null,
+            username: null,
+            password: null,
+            bio: null,
+        };
 
         this.handleEdit = this.handleEdit.bind(this);
     }
@@ -24,18 +30,61 @@ class EditForm extends React.Component {
 
     handleEdit() {
 
-        const { email, password, username, bio, fullname } = this.state;
+
+        var {  password, username, bio, fullname } = this.state;
+
+        let name1 = "";
+        let username1 = "";
+        let password1 = "";
+        let bio1 = "";
 
     
                 var db = firebase.firestore();
                 var userRef = db.collection("users");
-    
-                userRef.doc(this.props.firebase.autho.currentUser.uid).update({
-                    password : password,
-                    username: username, 
-                    bio : bio,
-                    fullname : fullname,
-                })
+                var query = userRef.where("email", "==", this.props.firebase.autho.currentUser.email);
+
+                query.get().then(function (querySnapshot) {
+                    querySnapshot.forEach(function (doc) {
+                        name1 = doc.data().fullname;
+                        username1 = doc.data().username;
+                        password1 = doc.data().password;
+                        bio1 = doc.data().bio;
+                    })
+                }).then(() => {
+                    this.setState({
+                        name: name1,
+                        username: username1,
+                        password: password1,
+                        bio: bio1,
+                    });
+                });
+
+                if(fullname != null){
+                    userRef.doc(this.props.firebase.autho.currentUser.uid).set({
+                        fullname : fullname,
+                    }, { merge: true })
+                   
+                }
+                if(username != null){
+                    userRef.doc(this.props.firebase.autho.currentUser.uid).set({
+                        username : username,
+                    }, { merge: true })
+                   
+                }
+                if(bio != null){
+                    userRef.doc(this.props.firebase.autho.currentUser.uid).set({
+                        bio : bio,
+                    }, { merge: true })
+                   
+                }
+                if(password != null){
+                    this.props.firebase.autho.currentUser.updatePassword(password);
+                    userRef.doc(this.props.firebase.autho.currentUser.uid).set({
+                        password : password,
+                    }, { merge: true })
+                   
+                }
+
     
                 this.props.history.push("/Dashboard");
             }
@@ -68,15 +117,16 @@ class EditForm extends React.Component {
                         </Grid>
 
                         <Grid item>
+                            <TextField name="bio" onChange={this.onChange} label="Bio" variant="outlined"> </TextField>
+                        </Grid>
+
+                        <Grid item>
+                            <TextField name="fullname" onChange={this.onChange} label="Full Name" variant="outlined"> </TextField>
+                        </Grid>
+
+                        
+                        <Grid item>
                             <TextField name="password" onChange={this.onChange} label="Password" variant="outlined"> </TextField>
-                        </Grid>
-
-                        <Grid item>
-                            <TextField name="bio" onChange={this.onChange} label="bio" variant="outlined"> </TextField>
-                        </Grid>
-
-                        <Grid item>
-                            <TextField name="fullname" onChange={this.onChange} label="fullname" variant="outlined"> </TextField>
                         </Grid>
 
 

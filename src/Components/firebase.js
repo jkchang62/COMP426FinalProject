@@ -34,6 +34,8 @@ class Firebase {
 
     StateChange = () => this.autho.onAuthStateChanged((user) => {if(user){console.log('helloWOrld')}});
 
+    DeleteUser = () => this.autho.currentUser.delete();
+
 }
 
 export default Firebase;
