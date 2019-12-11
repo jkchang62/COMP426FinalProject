@@ -32,6 +32,8 @@ class MainPage extends React.Component {
 
     handleVote1() {
 
+        let likedImages = [];
+
         this.props.firebase.state.commentImageURL = this.state.imageurl1;
         this.props.firebase.state.currentImageComments = this.state.imagecomments1;
         this.props.firebase.state.currentImageID = this.state.imageID1;
@@ -41,19 +43,38 @@ class MainPage extends React.Component {
 
         imageRef.doc(this.state.imageID1).set({
             timesVoted: this.state.imagevotes1 + 1,
-        }, { merge: true })
+        }, { merge: true });
 
         imageRef.doc(this.state.imageID1).set({
             timesAppeared: this.state.imageappearances1 + 1,
-        }, { merge: true })
+        }, { merge: true });
 
         imageRef.doc(this.state.imageID2).set({
             timesAppeared: this.state.imageappearances2 + 1,
-        }, { merge: true })
+        }, { merge: true });
 
-    }
+        var usersRef = db.collection("users");
+        var query = usersRef.where("email", "==", this.props.firebase.autho.currentUser.email);
+
+        query.get().then(function (querySnapshot) {
+
+            querySnapshot.forEach(function(doc) {
+                likedImages = doc.data().likedImages;
+            })
+            }).then(() => {
+                likedImages.push(this.props.firebase.state.commentImageURL)
+                var usersRef = db.collection("users");
+                usersRef.doc(this.props.firebase.autho.currentUser.uid).set({
+                likedImages : likedImages,
+                },{merge : true});
+                
+            });
+        }
+
 
     handleVote2() {
+
+        let likedImages = [];
 
         this.props.firebase.state.commentImageURL = this.state.imageurl2;
         this.props.firebase.state.currentImageComments = this.state.imagecomments2;
@@ -73,6 +94,23 @@ class MainPage extends React.Component {
         imageRef.doc(this.state.imageID2).set({
             timesAppeared: this.state.imageappearances2 + 1,
         }, { merge: true })
+
+        var usersRef = db.collection("users");
+        var query = usersRef.where("email", "==", this.props.firebase.autho.currentUser.email);
+
+        query.get().then(function (querySnapshot) {
+
+            querySnapshot.forEach(function(doc) {
+                likedImages = doc.data().likedImages;
+            })
+            }).then(() => {
+                likedImages.push(this.props.firebase.state.commentImageURL)
+                var usersRef = db.collection("users");
+                usersRef.doc(this.props.firebase.autho.currentUser.uid).set({
+                likedImages : likedImages,
+                },{merge : true});
+                
+            });
 
     }
 
