@@ -31,8 +31,10 @@ class PasswordForgetForm extends React.Component {
         this.props.firebase.autho
             .sendPasswordResetEmail(email).then( (authUser) => {
             this.setState({ ...INITIAL_STATE}); 
+
             alert('Password Reset has been set to Your Email');
-            this.props.history.push("/MainPage");
+            this.props.history.push("/signin");
+
             }).catch(error => {
                 this.setState({ error }); 
                 alert(this.state.error.message);
@@ -72,13 +74,12 @@ class PasswordForgetForm extends React.Component {
                             <TextField name="email" className="user-input" label="Email" onChange={this.onChange} variant="outlined"> </TextField>
                         </Grid>
                         <Grid item>
-                            <Link to="/dashboard">
+                            <Link to="/signin">
                                 <Button disable={isInvalid} variant="contained" color = "primary" onClick={this.handleForgot}> Send Request </Button>
                             </Link>
                         </Grid>
 
                         <Grid item >
-                        {error && <p>{error.message}</p>}
                         </Grid>
                     </Grid>
 
@@ -88,6 +89,6 @@ class PasswordForgetForm extends React.Component {
     }
 }
 
-const PasswordForget = withFirebase(PasswordForgetForm);
+const PasswordForget = withRouter(withFirebase(PasswordForgetForm));
 export default PasswordPage;
 export {PasswordForgetForm};

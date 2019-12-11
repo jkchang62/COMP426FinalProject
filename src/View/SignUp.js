@@ -4,7 +4,7 @@ import PrimaryHeader from '../Components/PrimaryHeader'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Grid, TextField, Button } from '@material-ui/core';
 import { Link, withRouter} from 'react-router-dom';
-
+import firebase from 'firebase';
 import { withFirebase } from '../Components/index';
 
 const SignUpPage = () => (
@@ -28,18 +28,31 @@ class SignUp extends React.Component {
     // Add the functionality here
     handleSignUp() {
 
-        const { email, passwordOne } = this.state;
+        const { email, passwordOne ,username} = this.state;
 
         this.props.firebase
             .CreateUser(email, passwordOne)
             .then(authUser => {
                 this.setState({ ...INITIAL_STATE });
-                console.log(authUser);
+
+                var db = firebase.firestore();
+                var userRef = db.collection("users");
+    
+                userRef.doc(this.props.firebase.autho.currentUser.uid).set({
+                    email : email,
+                    password : passwordOne,
+                    username: username, 
+                    bio : "Add a bio",
+                    fullname : "Add your name",
+                    likedImages : [],
+                })
+    
                 this.props.history.push("/Dashboard");
             })
             .catch(error=> {
                 this.setState({ error }); 
             });
+
 
     }
 
@@ -56,6 +69,7 @@ class SignUp extends React.Component {
         const {
             email,
             passwordOne,
+            username, 
             error,
         } = this.state;
 
@@ -77,6 +91,10 @@ class SignUp extends React.Component {
 
                         <Grid item className="avatar-picture-signup">
                             <AccountCircleIcon fontSize="inherit" />
+                        </Grid>
+
+                        <Grid item>
+                            <TextField name="username" onChange={this.onChange} label="Username" variant="outlined"> </TextField>
                         </Grid>
 
                         <Grid item>

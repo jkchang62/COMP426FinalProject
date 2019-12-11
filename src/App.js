@@ -5,7 +5,6 @@ import Comments from './View/Comments';
 import SignIn from './View/SignIn';
 import SignUp from './View/SignUp';
 import forgotPass from './View/forgotPass';
-
 import MainPage from './View/MainPage';
 import { Route } from 'react-router';
 import { BrowserRouter as Router } from 'react-router-dom';
