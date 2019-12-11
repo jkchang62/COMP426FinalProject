@@ -8,7 +8,6 @@ import SignUp from './View/SignUp';
 import MainPage from './View/MainPage';
 import { Route } from 'react-router';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { tsConstructorType } from '@babel/types';
 import {AuthUserContext} from './Components/sessions'
 import { withFirebase} from './Components/index';
 import Navigation from './Components/Navigation';

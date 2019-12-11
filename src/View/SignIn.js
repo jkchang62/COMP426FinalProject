@@ -19,7 +19,6 @@ const INITIAL_STATE = {
 };
 
 class SignIn extends React.Component {
-
     constructor(props) {
         super(props);
         this.handleSignIn = this.handleSignIn.bind(this);

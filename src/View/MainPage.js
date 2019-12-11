@@ -77,7 +77,6 @@ class MainPage extends React.Component {
 
     }
 
-
     componentWillMount() {
 
         let imageurl = "";
@@ -89,9 +88,7 @@ class MainPage extends React.Component {
 
         var db = firebase.firestore();
         var imageRef = db.collection("images");
-
         let numImages = 5;
-
         var query1 = imageRef.where("randomIndex", "==", Math.floor(Math.random() * Math.floor(numImages)))
 
         query1.get().then(function (querySnapshot) {

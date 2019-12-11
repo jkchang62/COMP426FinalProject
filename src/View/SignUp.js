@@ -96,7 +96,6 @@ class SignUp extends React.Component {
                         </Link>
                         {error && <p>{error.message}</p>}
                     </Grid>
-
                 </div>
             </div>
         );

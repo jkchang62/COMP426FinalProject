@@ -1,14 +1,13 @@
 import { AuthUserContext } from './sessions';
 import React from 'react';
-import {Link} from 'react-router-dom';
-import signOutEvent from './signOut';
+import { Link } from 'react-router-dom';
 
 const Navigation = () => (
-<div>
-<AuthUserContext.Consumer>
-{authUser => authUser ? <NavAuth /> : <NavNoAuth /> }
-</AuthUserContext.Consumer>
-</div>
+    <div>
+        <AuthUserContext.Consumer>
+            {authUser => authUser ? <NavAuth /> : <NavNoAuth />}
+        </AuthUserContext.Consumer>
+    </div>
 );
 
 const NavAuth = () => (
@@ -25,6 +24,6 @@ const NavNoAuth = () => (
             <Link to="/SignIn">Sign In</Link>
         </li>
     </ul>
-); 
+);
 
 export default Navigation;

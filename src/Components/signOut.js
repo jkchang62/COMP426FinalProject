@@ -1,3 +1,5 @@
+// Sign out event
+
 import React from 'react';
 import {withFirebase} from '../Components/index';
 
