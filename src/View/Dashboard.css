@@ -4,7 +4,7 @@
 
 .bio-container {
     position: relative;
-    float: left;
+    float: center;
 
     border: 0.25rem solid black;
     width: 30rem;
@@ -39,14 +39,20 @@
 
 .liked-history-container {
     position: relative;
-    float: right;
+    float: center;
 
     border: 0.25rem solid black;
     width: 40rem;
     height: 40rem;
     margin: 5rem;
+
+    overflow: scroll;
 }
 
 .liked-history-title {
     text-align: center;
+}
+
+#myPics {
+    height: 30rem;
 }
