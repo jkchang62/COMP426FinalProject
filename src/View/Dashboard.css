@@ -4,13 +4,12 @@
 
 .bio-container {
     position: relative;
-    float: center;
+    float: left;
 
     border: 0.25rem solid black;
     width: 30rem;
     height: 40rem;
-    margin: 5rem;
-
+    margin: 1rem;
 }
 
 .profile-picture-container {
@@ -39,12 +38,12 @@
 
 .liked-history-container {
     position: relative;
-    float: center;
+    float: right;
 
     border: 0.25rem solid black;
     width: 40rem;
     height: 40rem;
-    margin: 5rem;
+    margin: 1rem;
 
     overflow: scroll;
 }
