@@ -9,8 +9,7 @@ import forgotPass from './View/forgotPass';
 import MainPage from './View/MainPage';
 import { Route } from 'react-router';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { tsConstructorType } from '@babel/types';
-
+import PrimaryHeader from './Components/PrimaryHeader';
 import {highAuthentication} from './Components/sessions'
 import Navigation from './Components/Navigation';
 
@@ -21,7 +20,7 @@ function App() {
         <div className="App">
           <header className="App-header">
             <Router>
-            <Navigation />
+            <PrimaryHeader />
             <hr/>
               <Route path={"/mainpage"} component={MainPage} />
               <Route path={"/dashboard"} component={Dashboard} />

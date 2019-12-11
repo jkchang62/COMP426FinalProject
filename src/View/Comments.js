@@ -23,7 +23,8 @@ class Comments extends React.Component {
         super(props);
         this.state = {
             commentArray: [],
-            value: ''};
+            value: ''
+        };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -49,15 +50,15 @@ class Comments extends React.Component {
         );
       }*/
     handleChange(event) {
-        this.setState({value: event.target.value});
+        this.setState({ value: event.target.value });
     }
     handleSubmit(event) {
         var db = firebase.firestore();
         var image = db.collection("images").doc(this.props.firebase.state.currentImageID)
         var comment = this.state.value
         event.preventDefault();
-        
-        image.get().then(function(doc) {
+
+        image.get().then(function (doc) {
             let newcomments = doc.data().comments;
             newcomments.push({
                 user: "dan",
@@ -66,17 +67,14 @@ class Comments extends React.Component {
             image.update({
                 comments: newcomments
             })
-        }).catch(function(error) {
+        }).catch(function (error) {
             console.log("Error getting document:", error);
         })
-        //alert('A comment was submitted: ' + this.props.firebase.state.currentImageID);
     }
     render() {
-        //console.log(this.state.commentArray)
         const listItems = this.state.commentArray.map((d) => <li key={d.user}>{d.user}</li>)
         return (
             <div>
-                <PrimarySearchAppBar />
 
                 <div className="back-button">
                     <Link to="/mainpage">
@@ -89,8 +87,8 @@ class Comments extends React.Component {
                 </div>
 
                 <div className="picture-container">
-                <CardMedia class = "myPics" image= {this.props.firebase.state.commentImageURL} >
-                </CardMedia>
+                    <CardMedia class="myPics" image={this.props.firebase.state.commentImageURL} >
+                    </CardMedia>
                 </div>
 
                 <div className="comment-container">
@@ -99,7 +97,7 @@ class Comments extends React.Component {
                     </ul>
                     <form onSubmit={this.handleSubmit}>
                         <label>
-                            Comment: 
+                            Comment:
                             <input type="text" onChange={this.handleChange} />
                         </label>
                         <input type="submit" value="Submit" />

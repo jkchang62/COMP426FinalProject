@@ -1,35 +1,35 @@
-import { AuthUserContext } from './sessions';
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { AuthUserContext } from './sessions';
+import { Link } from 'react-router-dom';
+import SignOut from './signOut';
 
-import SignOutEvent from './signOut';
+/**
+ * Moved ALL content to PrimaryHeader.js for more accessibility and ease. 
+ * !SHOULD NO LONGER USE!
+ */
 
+
+const linkStyle = {
+    color: 'white'
+}
 
 const Navigation = () => (
-<div>
-<AuthUserContext.Consumer>
-{authUser => authUser ? <NavAuth /> : <NavNoAuth /> }
-</AuthUserContext.Consumer>
-</div>
+    <div>
+        <AuthUserContext.Consumer>
+            {authUser => authUser ? <NavAuth /> : <NavNoAuth />}
+        </AuthUserContext.Consumer>
+    </div>
 );
 
 const NavAuth = () => (
-    <ul>
-        <li>
-            <Link to="/DashBoard">Dashboard</Link>
-        </li>
-        <li>
-        <SignOutEvent />
-        </li>
-    </ul>
+    <div>
+        <Link to="/DashBoard" style={linkStyle}>Dashboard</Link>
+        <SignOut />
+    </div>
 );
 
 const NavNoAuth = () => (
-    <ul>
-        <li>
-            <Link to="/SignIn">Sign In</Link>
-        </li>
-    </ul>
-); 
+    <Link to="/SignIn">Sign In</Link>
+);
 
 export default Navigation;

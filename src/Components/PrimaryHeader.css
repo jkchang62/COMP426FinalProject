@@ -1,0 +1,9 @@
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.navigation-container {
+    position: relative;
+    float: right;
+}

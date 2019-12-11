@@ -3,15 +3,11 @@ import './SignIn.css';
 import PrimaryHeader from '../Components/PrimaryHeader'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Grid, TextField, Button } from '@material-ui/core';
-import { Link, withRouter} from 'react-router-dom';
-//import SignUpPage from './SignUp';
-//import PasswordPage from '../Components/forgotPass';
-import {withFirebase} from '../Components/index';
-
-
+import { Link, withRouter } from 'react-router-dom';
+import { withFirebase } from '../Components/index';
 
 const SignInPage = () => (
-        <SignInForm />
+    <SignInForm />
 )
 
 const INITIAL_STATE = {
@@ -25,7 +21,7 @@ class SignIn extends React.Component {
     constructor(props) {
         super(props);
         this.handleSignIn = this.handleSignIn.bind(this);
-        this.state = { ...INITIAL_STATE }; 
+        this.state = { ...INITIAL_STATE };
     }
 
     // Add the functionality here
@@ -33,15 +29,15 @@ class SignIn extends React.Component {
 
     handleSignIn(event) {
         console.log("Signing in");
-        const {email, password } = this.state; 
+        const { email, password } = this.state;
         event.preventDefault();
         this.props.firebase
-            .SignInUser(email, password).then( (authUser) => {
-            this.setState({ ...INITIAL_STATE}); 
-            console.log(authUser);
-            this.props.history.push("/MainPage");
+            .SignInUser(email, password).then((authUser) => {
+                this.setState({ ...INITIAL_STATE });
+                console.log(authUser);
+                this.props.history.push("/MainPage");
             }).catch(error => {
-                this.setState({ error }); 
+                this.setState({ error });
                 alert(this.state.error.message);
             });
 
@@ -57,14 +53,12 @@ class SignIn extends React.Component {
             email,
             password,
             error,
-        } = this.state; 
+        } = this.state;
 
         const isInvalid = email === '';
 
         return (
             <div>
-                <PrimaryHeader />
-
                 <div className="signin-box">
                     <div className="signin-box-header" />
                     <Grid
@@ -77,8 +71,8 @@ class SignIn extends React.Component {
                         className="input-grid"
                     >
 
-                        <Grid item className = "avatar-picture">
-                            <AccountCircleIcon fontSize = "inherit"/>
+                        <Grid item className="avatar-picture">
+                            <AccountCircleIcon fontSize="inherit" />
                         </Grid>
 
                         <Grid item>
@@ -90,20 +84,20 @@ class SignIn extends React.Component {
 
                         <Grid item>
                             <Link to="/dashboard">
-                                <Button disable={isInvalid} variant="contained" color = "primary" onClick={this.handleSignIn}> SignIn </Button>
+                                <Button disable={isInvalid} variant="contained" color="primary" onClick={this.handleSignIn}> SignIn </Button>
                             </Link>
                         </Grid>
                         <Grid item>
                             <Link to='/forgot'>
-                            <Button variant="contained" color = "primary"> ForgotPass </Button>
+                                <Button variant="contained" color="primary"> ForgotPass </Button>
                             </Link>
                         </Grid>
                         <Grid item >
-                        {error && <p>{error.message}</p>}
+                            {error && <p>{error.message}</p>}
                         </Grid>
 
                         <Grid item >
-                        {error && <p>{error.message}</p>}
+                            {error && <p>{error.message}</p>}
                         </Grid>
 
                         <Link to="/signup">
@@ -119,4 +113,4 @@ class SignIn extends React.Component {
 
 const SignInForm = withRouter(withFirebase(SignIn));
 export default SignInPage;
-export {SignInForm};
+export { SignInForm };

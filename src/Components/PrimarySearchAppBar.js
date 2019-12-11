@@ -14,9 +14,11 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { Link } from 'react-router-dom';
+import Navigation from './Navigation';
 
 /**
- * Component for the search bar and header 
+ * Moved ALL content to PrimaryHeader.js for more accessibility and ease. 
+ * !SHOULD NO LONGER USE!
  */
 
 
@@ -152,15 +154,15 @@ export default function PrimarySearchAppBar() {
             </MenuItem>
             <MenuItem onClick={handleProfileMenuOpen}>
                 <Link to="/dashboard">
-                <IconButton
-                    aria-label="account of current user"
-                    aria-controls="primary-search-account-menu"
-                    aria-haspopup="true"
-                    color="inherit"
-                >
+                    <IconButton
+                        aria-label="account of current user"
+                        aria-controls="primary-search-account-menu"
+                        aria-haspopup="true"
+                        color="inherit"
+                    >
                         <AccountCircle />
-                </IconButton>
-                    </Link>
+                    </IconButton>
+                </Link>
                 <p>Profile</p>
             </MenuItem>
         </Menu>
@@ -173,7 +175,8 @@ export default function PrimarySearchAppBar() {
 
                     <Typography className={classes.title} variant="h6" noWrap>
                         Search User...
-          </Typography>
+                    </Typography>
+
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <SearchIcon />
@@ -190,7 +193,8 @@ export default function PrimarySearchAppBar() {
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
 
-                        <AccountCircle />
+                    <Navigation />
+                    <AccountCircle />
 
                     </div>
                     <div className={classes.sectionMobile}>

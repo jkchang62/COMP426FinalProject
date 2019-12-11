@@ -139,10 +139,8 @@ class MainPage extends React.Component {
     }
 
     render() {
-    
         return (
             <div>
-                <PrimarySearchAppBar />
                 <div className="picture-container-one">
                     <Card raised id="card-one">
                         <CardHeader title={"Name of the piece: need to add to DB     Artist: " + this.state.imageartist1} />
