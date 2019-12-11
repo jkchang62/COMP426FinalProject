@@ -5,7 +5,8 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Grid, TextField, Button } from '@material-ui/core';
 import { Link, withRouter} from 'react-router-dom';
 //import SignUpPage from './SignUp';
-import {withFirebase} from '../Components/index'
+//import PasswordPage from '../Components/forgotPass';
+import {withFirebase} from '../Components/index';
 
 
 const SignInPage = () => (
@@ -91,7 +92,11 @@ class SignIn extends React.Component {
                                 <Button disable={isInvalid} variant="contained" color = "primary" onClick={this.handleSignIn}> SignIn </Button>
                             </Link>
                         </Grid>
-
+                        <Grid item>
+                            <Link to='/forgot'>
+                            <Button variant="contained" color = "primary"> ForgotPass </Button>
+                            </Link>
+                        </Grid>
                         <Grid item >
                         {error && <p>{error.message}</p>}
                         </Grid>

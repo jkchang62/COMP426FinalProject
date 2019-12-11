@@ -4,6 +4,8 @@ import Dashboard from './View/Dashboard';
 import Comments from './View/Comments';
 import SignIn from './View/SignIn';
 import SignUp from './View/SignUp';
+import forgotPass from './View/forgotPass';
+
 import MainPage from './View/MainPage';
 import { Route } from 'react-router';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -25,6 +27,7 @@ function App() {
               <Route path={"/signup"} component={SignUp} />
               <Route path={"/signin"} component={SignIn} />
               <Route path={"/comments"} component={Comments} />
+              <Route path={"/forgot"} component={forgotPass} />
             </Router>
           </header>
         </div>
