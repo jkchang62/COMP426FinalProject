@@ -21,7 +21,6 @@ const CommentsAlpha = () => (
 class Comments extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             commentArray: [],
             value: ''};
@@ -90,8 +89,8 @@ class Comments extends React.Component {
                 </div>
 
                 <div className="picture-container">
-                    <CardMedia class="myPics" image={this.props.firebase.state.commentImageURL}>
-                    </CardMedia>
+                <CardMedia class = "myPics" image= {this.props.firebase.state.commentImageURL} >
+                </CardMedia>
                 </div>
 
                 <div className="comment-container">
@@ -113,6 +112,7 @@ class Comments extends React.Component {
         )
     }
 }
+
 
 const CommentsFire = withFirebase(Comments);
 export default CommentsAlpha;

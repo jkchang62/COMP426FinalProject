@@ -1,7 +1,9 @@
 import { AuthUserContext } from './sessions';
 import React from 'react';
 import {Link} from 'react-router-dom';
-import signOutEvent from './signOut';
+
+import SignOutEvent from './signOut';
+
 
 const Navigation = () => (
 <div>
@@ -15,6 +17,9 @@ const NavAuth = () => (
     <ul>
         <li>
             <Link to="/DashBoard">Dashboard</Link>
+        </li>
+        <li>
+        <SignOutEvent />
         </li>
     </ul>
 );

@@ -59,7 +59,6 @@ class MainPage extends React.Component {
         this.props.firebase.state.currentImageComments = this.state.imagecomments2;
         this.props.firebase.state.currentImageID = this.state.imageID2;
 
-
         var db = firebase.firestore();
         var imageRef = db.collection("images");
 
@@ -89,6 +88,7 @@ class MainPage extends React.Component {
 
         var db = firebase.firestore();
         var imageRef = db.collection("images");
+
 
         let numImages = 5;
 
@@ -144,11 +144,16 @@ class MainPage extends React.Component {
             <div>
                 <PrimarySearchAppBar />
                 <div className="picture-container-one">
+                    <Card raised id="card-one">
+                        <CardHeader title={"Name of the piece: need to add to DB     Artist: " + this.state.imageartist1} />
                         <CardMedia class = "myPics" image = {this.state.imageurl1}>
+                        For some reason the images only render if there is a bunch of text in the CardMedia tags but at least we got the images working 🙂    
+
                         </CardMedia>
                         {"Votes: " + this.state.imagevotes1}
                         {"Winning Percentage: " + (this.state.imagevotes1 / this.state.imageappearances1)*100  + "%"}
                         {"Comments: " + this.state.imagecomments1}
+                    </Card>
                 </div>
 
                 <div className="vote-button-one">
@@ -160,11 +165,15 @@ class MainPage extends React.Component {
                 </div>
 
                 <div className="picture-container-two">
+                    <Card raised id="card-two">
+                    <CardHeader title={"Name of the piece: need to add to DB     Artist: " + this.state.imageartist2} />
                         <CardMedia class = "myPics" image = {this.state.imageurl2}>
+                        For some reason the images only render if there is a bunch of text in the CardMedia tags but at least we got the images working 🙂
                         </CardMedia>
                         {"Votes: " + this.state.imagevotes2}
                         {"Winning Percentage: " + (this.state.imagevotes2 / this.state.imageappearances2)*100 + "%"}
                         {"Comments: " + this.state.imagecomments2}
+                    </Card>
                 </div>
 
                 <div className="vote-button-two">

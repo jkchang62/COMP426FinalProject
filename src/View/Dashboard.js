@@ -86,7 +86,6 @@ class Dashboard extends React.Component {
     //     this.listener();
     //   }
 
-
     render() {
 
 
@@ -124,6 +123,11 @@ class Dashboard extends React.Component {
                     <div>
                         <p>
                         </p>
+                    </div>
+                    <div>
+                       <p> Naem {JSON.parse(window.localStorage.authUser).email}
+                       {/* {this.props.firebase.autho.currentUser.uid} */}
+                       </p>
                     </div>
                 </div>
             </div>
