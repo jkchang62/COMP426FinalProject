@@ -32,6 +32,7 @@ class Comments extends React.Component {
     componentWillMount() {
         this.state.commentArray = this.props.firebase.state.currentImageComments
     }
+
     /*getComments() {
         // Build an array of items
         let array = [];
@@ -49,6 +50,7 @@ class Comments extends React.Component {
           </div>
         );
       }*/
+      
     handleChange(event) {
         this.setState({value: event.target.value});
     }
