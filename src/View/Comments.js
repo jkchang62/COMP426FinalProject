@@ -23,37 +23,39 @@ class Comments extends React.Component {
         super(props);
         this.state = {
             commentArray: [],
-            value: ''};
+            url: '',
+            value: '',
+            title: '',
+            culture: '',
+            dated: '',
+            timesAppeared: null,
+            timesVoted: null};
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     componentWillMount() {
-        this.state.commentArray = this.props.firebase.state.currentImageComments
+        var db = firebase.firestore();
+        var image = db.collection("images").doc(localStorage.getItem('currentImage'))
+        var a = this
+        image.get().then(function(doc) {
+            a.setState({
+                commentArray : doc.data().comments,
+                url : doc.data().url,
+                title : doc.data().title,
+                culture : doc.data().culture,
+                dated : doc.data().dated,
+                timesAppeared : doc.data().timesAppeared,
+                timesVoted : doc.data().timesVoted
+            })
+        })
     }
-    /*getComments() {
-        // Build an array of items
-        let array = [];
-        for(let i = 0; i < this.state.commentArray; i++) {
-            let string = "User: " + this.state.commentArray[i].user + "\n" + this.this.state.commentArray[i].text
-          array.push(
-            <Item key={i} item={string} />
-          );
-        }
-      
-        // Render it
-        return (
-          <div>
-            {array}
-          </div>
-        );
-      }*/
     handleChange(event) {
         this.setState({value: event.target.value});
     }
     handleSubmit(event) {
         var db = firebase.firestore();
-        var image = db.collection("images").doc(this.props.firebase.state.currentImageID)
+        var image = db.collection("images").doc(localStorage.getItem('currentImage'))
         var comment = this.state.value
         event.preventDefault();
         
@@ -69,11 +71,16 @@ class Comments extends React.Component {
         }).catch(function(error) {
             console.log("Error getting document:", error);
         })
-        //alert('A comment was submitted: ' + this.props.firebase.state.currentImageID);
+
+        var a = this
+        db.collection('images').doc(localStorage.getItem('currentImage'))
+        .onSnapshot(function(doc) {
+            a.setState({
+                commentArray : doc.data().comments
+            })
+        })
     }
     render() {
-        //console.log(this.state.commentArray)
-        const listItems = this.state.commentArray.map((d) => <li key={d.user}>{d.user}</li>)
         return (
             <div>
                 <PrimarySearchAppBar />
@@ -89,8 +96,15 @@ class Comments extends React.Component {
                 </div>
 
                 <div className="picture-container">
-                <CardMedia class = "myPics" image= {this.props.firebase.state.commentImageURL} >
-                </CardMedia>
+                    <CardMedia class = "myPics" image= {this.state.url} >
+                    </CardMedia>
+                </div>
+
+                <div className="stats-container">
+                    <h3>Title: {this.state.title}</h3>
+                    <p>Dated: {this.state.dated}</p>
+                    <p>Culture: {this.state.culture}</p>
+                    <p>Win Percentage: {(this.state.timesVoted/this.state.timesAppeared).toFixed(3)}</p>
                 </div>
 
                 <div className="comment-container">

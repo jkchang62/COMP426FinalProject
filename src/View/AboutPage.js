@@ -1,6 +1,6 @@
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import React from 'react';
-import GoogleMapReact from 'google-maps-react';
+import GoogleMapReact from 'google-map-react';
 import logo from './harvard-art.jpg'
 
 export class AboutPage extends React.Component {
