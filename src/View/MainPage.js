@@ -17,6 +17,7 @@ class MainPage extends React.Component {
         super(props);
         this.state = {
             imageurl1: null, imageurl2: null,
+            imagetitle1: null, imagetitle2: null,
             imageartist1: null, imageartist2: null,
             imagecomments1: null, imagecomments2: null,
             imageappearances1: null, imageappearances2: null,
@@ -36,6 +37,7 @@ class MainPage extends React.Component {
         let likedImages = [];
 
         this.props.firebase.state.commentImageURL = this.state.imageurl1;
+        this.props.firebase.state.commentImageTitle = this.state.imagetitle1;
         this.props.firebase.state.currentImageComments = this.state.imagecomments1;
         this.props.firebase.state.currentImageID = this.state.imageID1;
         localStorage.setItem('currentImage', this.state.imageID1)
@@ -55,23 +57,28 @@ class MainPage extends React.Component {
             timesAppeared: this.state.imageappearances2 + 1,
         }, { merge: true });
 
-        var usersRef = db.collection("users");
-        var query = usersRef.where("email", "==", this.props.firebase.autho.currentUser.email);
+        if (this.props.firebase.autho.currentUser != null) {
+            var usersRef = db.collection("users");
+            var query = usersRef.where("email", "==", this.props.firebase.autho.currentUser.email);
 
-        query.get().then(function (querySnapshot) {
+            query.get().then(function (querySnapshot) {
 
-            querySnapshot.forEach(function(doc) {
-                likedImages = doc.data().likedImages;
-            })
-            }).then(() => {
-                likedImages.push(this.props.firebase.state.commentImageURL)
-                var usersRef = db.collection("users");
-                usersRef.doc(this.props.firebase.autho.currentUser.uid).set({
-                likedImages : likedImages,
-                },{merge : true});
-                
-            });
-        }
+                querySnapshot.forEach(function(doc) {
+                    likedImages = doc.data().likedImages;
+                })
+                }).then(() => {
+                    likedImages.push({
+                        'title': this.props.firebase.state.commentImageTitle,
+                        'url': this.props.firebase.state.commentImageURL
+                    })
+                    var usersRef = db.collection("users");
+                    usersRef.doc(this.props.firebase.autho.currentUser.uid).set({
+                        likedImages : likedImages,
+                    },{merge : true});
+                    
+                });
+            }
+        }   
 
 
     handleVote2() {
@@ -99,22 +106,27 @@ class MainPage extends React.Component {
             timesAppeared: this.state.imageappearances2 + 1,
         }, { merge: true })
 
-        var usersRef = db.collection("users");
-        var query = usersRef.where("email", "==", this.props.firebase.autho.currentUser.email);
+        if (this.props.firebase.autho.currentUser != null) {
+            var usersRef = db.collection("users");
+            var query = usersRef.where("email", "==", this.props.firebase.autho.currentUser.email);
 
-        query.get().then(function (querySnapshot) {
+            query.get().then(function (querySnapshot) {
 
-            querySnapshot.forEach(function(doc) {
-                likedImages = doc.data().likedImages;
-            })
-            }).then(() => {
-                likedImages.push(this.props.firebase.state.commentImageURL)
-                var usersRef = db.collection("users");
-                usersRef.doc(this.props.firebase.autho.currentUser.uid).set({
-                likedImages : likedImages,
-                },{merge : true});
-                
-            });
+                querySnapshot.forEach(function(doc) {
+                    likedImages = doc.data().likedImages;
+                })
+                }).then(() => {
+                    likedImages.push({
+                        'title': this.props.firebase.state.commentImageTitle,
+                        'url': this.props.firebase.state.commentImageURL
+                    })
+                    var usersRef = db.collection("users");
+                    usersRef.doc(this.props.firebase.autho.currentUser.uid).set({
+                    likedImages : likedImages,
+                    },{merge : true});
+                    
+                });
+            }
 
     }
 
@@ -132,6 +144,7 @@ class MainPage extends React.Component {
     componentWillMount() {
 
         let imageurl = "";
+        let title = "";
         let artist = "";
         let comments = [];
         let votes = 0;
@@ -142,7 +155,7 @@ class MainPage extends React.Component {
         var imageRef = db.collection("images");
 
 
-        let numImages = 5;
+        let numImages = 50;
 
         var query1 = imageRef.where("randomIndex", "==", Math.floor(Math.random() * Math.floor(numImages)))
 
@@ -150,6 +163,7 @@ class MainPage extends React.Component {
             querySnapshot.forEach(function (doc) {
                 imageID = doc.id;
                 imageurl = doc.data().url;
+                title = doc.data().title;
                 artist = doc.data().artist;
                 comments = doc.data().comments;
                 votes = doc.data().timesVoted;
@@ -158,6 +172,7 @@ class MainPage extends React.Component {
         }).then(() => {
             this.setState({
                 imageurl1: imageurl,
+                imagetitle1: title,
                 imageartist1: artist,
                 imagecomments1: comments,
                 imageappearances1: appearances,
@@ -172,6 +187,7 @@ class MainPage extends React.Component {
             querySnapshot.forEach(function (doc) {
                 imageID = doc.id;
                 imageurl = doc.data().url;
+                title = doc.data().title;
                 artist = doc.data().artist;
                 comments = doc.data().comments;
                 votes = doc.data().timesVoted;
@@ -180,6 +196,7 @@ class MainPage extends React.Component {
         }).then(() => {
             this.setState({
                 imageurl2: imageurl,
+                imagetitle2: title,
                 imageartist2: artist,
                 imagecomments2: comments,
                 imageappearances2: appearances,
@@ -198,9 +215,6 @@ class MainPage extends React.Component {
                 <div className="picture-container-one">
                     <CardMedia class="myPics" image={this.state.imageurl1}>
                     </CardMedia>
-                    {"Votes: " + this.state.imagevotes1}
-                    {"Winning Percentage: " + (this.state.imagevotes1 / this.state.imageappearances1) * 100 + "%"}
-                    {"Comments: " + this.state.imagecomments1}
                 </div>
 
                 <div className="refresh-button">
@@ -227,9 +241,6 @@ class MainPage extends React.Component {
                 <div className="picture-container-two">
                     <CardMedia class="myPics" image={this.state.imageurl2}>
                     </CardMedia>
-                    {"Votes: " + this.state.imagevotes2}
-                    {"Winning Percentage: " + (this.state.imagevotes2 / this.state.imageappearances2) * 100 + "%"}
-                    {"Comments: " + this.state.imagecomments2}
                 </div>
 
                 <div className="vote-button-two">

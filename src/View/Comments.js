@@ -29,7 +29,8 @@ class Comments extends React.Component {
             culture: '',
             dated: '',
             timesAppeared: null,
-            timesVoted: null};
+            timesVoted: null,
+            signedIn: false};
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -48,6 +49,9 @@ class Comments extends React.Component {
                 timesAppeared : doc.data().timesAppeared,
                 timesVoted : doc.data().timesVoted
             })
+        })
+        this.setState({
+            signedIn : this.props.firebase.autho.currentUser != null ? "show" : "hide"
         })
     }
     handleChange(event) {
@@ -120,7 +124,7 @@ class Comments extends React.Component {
                 </div>
 
                 <div className="form-container">
-                    <form onSubmit={this.handleSubmit}>
+                    <form class={this.state.signedIn} onSubmit={this.handleSubmit}>
                         <label>
                             Comment: 
                             <input type="text" onChange={this.handleChange} />
