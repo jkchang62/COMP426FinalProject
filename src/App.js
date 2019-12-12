@@ -8,6 +8,7 @@ import SignUp from './View/SignUp';
 import EditForm from './View/editProfile';
 import forgotPass from './View/forgotPass';
 import MainPage from './View/MainPage';
+import AboutPage from './View/AboutPage';
 import { Route } from 'react-router';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { tsConstructorType } from '@babel/types';
@@ -31,6 +32,7 @@ function App() {
               <Route path={"/comments"} component={Comments} />
               <Route path={"/forgot"} component={forgotPass} />
               <Route path={"/update"} component={EditForm} />
+              <Route path={"/about"} component={AboutPage} />
             </Router>
           </header>
         </div>

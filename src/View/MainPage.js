@@ -27,37 +27,62 @@ class MainPage extends React.Component {
         this.render = this.render.bind(this);
         this.handleVote1 = this.handleVote1.bind(this);
         this.handleVote2 = this.handleVote2.bind(this);
-        this.counter = 0;
+        this.handleView1 = this.handleView1.bind(this);
+        this.handleView2 = this.handleView2.bind(this);
     }
 
     handleVote1() {
 
+        let likedImages = [];
+
         this.props.firebase.state.commentImageURL = this.state.imageurl1;
         this.props.firebase.state.currentImageComments = this.state.imagecomments1;
         this.props.firebase.state.currentImageID = this.state.imageID1;
+        localStorage.setItem('currentImage', this.state.imageID1)
 
         var db = firebase.firestore();
         var imageRef = db.collection("images");
 
         imageRef.doc(this.state.imageID1).set({
             timesVoted: this.state.imagevotes1 + 1,
-        }, { merge: true })
+        }, { merge: true });
 
         imageRef.doc(this.state.imageID1).set({
             timesAppeared: this.state.imageappearances1 + 1,
-        }, { merge: true })
+        }, { merge: true });
 
         imageRef.doc(this.state.imageID2).set({
             timesAppeared: this.state.imageappearances2 + 1,
-        }, { merge: true })
+        }, { merge: true });
 
-    }
+        var usersRef = db.collection("users");
+        var query = usersRef.where("email", "==", this.props.firebase.autho.currentUser.email);
+
+        query.get().then(function (querySnapshot) {
+
+            querySnapshot.forEach(function(doc) {
+                likedImages = doc.data().likedImages;
+            })
+            }).then(() => {
+                likedImages.push(this.props.firebase.state.commentImageURL)
+                var usersRef = db.collection("users");
+                usersRef.doc(this.props.firebase.autho.currentUser.uid).set({
+                likedImages : likedImages,
+                },{merge : true});
+                
+            });
+        }
+
 
     handleVote2() {
+
+        let likedImages = [];
 
         this.props.firebase.state.commentImageURL = this.state.imageurl2;
         this.props.firebase.state.currentImageComments = this.state.imagecomments2;
         this.props.firebase.state.currentImageID = this.state.imageID2;
+        localStorage.setItem('currentImage', this.state.imageID2)
+
 
         var db = firebase.firestore();
         var imageRef = db.collection("images");
@@ -74,8 +99,35 @@ class MainPage extends React.Component {
             timesAppeared: this.state.imageappearances2 + 1,
         }, { merge: true })
 
+        var usersRef = db.collection("users");
+        var query = usersRef.where("email", "==", this.props.firebase.autho.currentUser.email);
+
+        query.get().then(function (querySnapshot) {
+
+            querySnapshot.forEach(function(doc) {
+                likedImages = doc.data().likedImages;
+            })
+            }).then(() => {
+                likedImages.push(this.props.firebase.state.commentImageURL)
+                var usersRef = db.collection("users");
+                usersRef.doc(this.props.firebase.autho.currentUser.uid).set({
+                likedImages : likedImages,
+                },{merge : true});
+                
+            });
+
     }
 
+    handleView1() {
+        localStorage.setItem('currentImage', this.state.imageID1)
+    }
+    handleView2() {
+        localStorage.setItem('currentImage', this.state.imageID2)
+    }
+
+    handleRefresh() {
+        window.location.reload(false);
+    }
 
     componentWillMount() {
 
@@ -151,10 +203,23 @@ class MainPage extends React.Component {
                     {"Comments: " + this.state.imagecomments1}
                 </div>
 
+                <div className="refresh-button">
+                    <Button variant="contained" color="primary" onClick={this.handleRefresh}>
+                            NEW IMAGES
+                    </Button>
+                </div>
                 <div className="vote-button-one">
-                    <Link to="/comments">
+                    <Link to="/mainpage">
                         <Button variant="contained" color="primary" onClick={this.handleVote1}>
                             VOTE
+                    </Button>
+                    </Link>
+                </div>
+
+                <div className="view-button-one">
+                    <Link to="/comments">
+                        <Button variant="contained" color="primary" onClick={this.handleView1}>
+                            ABOUT
                     </Button>
                     </Link>
                 </div>
@@ -168,11 +233,19 @@ class MainPage extends React.Component {
                 </div>
 
                 <div className="vote-button-two">
-                    <Link to="/comments">
+                    <Link to="/mainpage">
                         <Button variant="contained" color="primary" onClick={this.handleVote2}>
                             VOTE
                     </Button>
 
+                    </Link>
+                </div>
+
+                <div className="view-button-two">
+                    <Link to="/comments">
+                        <Button variant="contained" color="primary" onClick={this.handleView2}>
+                            ABOUT
+                    </Button>
                     </Link>
                 </div>
             </div>

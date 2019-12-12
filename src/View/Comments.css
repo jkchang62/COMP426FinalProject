@@ -4,9 +4,31 @@
     height: 20rem;
 
     position: absolute;
-    top: 40%;
+    top: 60%;
     left: 50%;
     margin-right: -50%;
+    transform: translate(-120%, -50%);
+}
+
+.stats-container {
+    color: black;
+    width: 50rem;
+    height: 30rem;
+
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(0%, -50%);
+
+}
+
+.form-container {
+    color: black;
+
+    position: absolute;
+    top: 145%;
+    left: 50%;
     transform: translate(-50%, -50%);
 }
 
@@ -17,12 +39,12 @@
     color: black;
     
     position: absolute;
-    top: 90%;
+    top: 110%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
 
-    overflow: scroll;
+    overflow: auto;
 }
 
 .back-button {
@@ -36,6 +58,32 @@
     transform: translate(-50%, -50%);
 }
 
+input {
+    border: 5px solid white; 
+    -webkit-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    -moz-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    padding: 15px;
+    background: rgba(255,255,255,0.5);
+    margin: 0 0 10px 0;
+    width: 100%;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+  }
+  li {
+    padding: 5px 10px;
+  }
+
 .myPics{
-    
+    object-fit: cover;
+    max-width: 100%;
 }

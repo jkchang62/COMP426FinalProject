@@ -32,6 +32,8 @@ class Dashboard extends React.Component {
 
     componentWillMount() {
 
+        window.localStorage.setItem('uid',this.props.firebase.autho.currentUser.uid);
+
         let imageurls = [];
         let name = "";
         let username = "";
@@ -73,6 +75,9 @@ class Dashboard extends React.Component {
     }
 
     render() {
+
+        var db = firebase.firestore();
+        var usersRef = db.collection("users");
 
         return (
 
