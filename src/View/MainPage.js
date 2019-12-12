@@ -1,6 +1,4 @@
 import React from 'react';
-import Card from '@material-ui/core/Card'
-import PrimarySearchAppBar from '../Components/PrimarySearchAppBar';
 import './MainPage.css'
 import { CardMedia, CardHeader, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
@@ -182,7 +180,7 @@ class MainPage extends React.Component {
         });
 
         var query2 = imageRef.where("randomIndex", "==", Math.floor(Math.random() * Math.floor(numImages)))
-
+        console.log(query2);
         query2.get().then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
                 imageID = doc.id;
@@ -210,7 +208,7 @@ class MainPage extends React.Component {
     render() {
         return (
             <div>
-                <div className="picture-container-one">
+                <div className="picture-container-one"> 
                     <CardMedia class="myPics">
                         <img src={this.state.imageurl1} class="pic"/>
                     </CardMedia>
@@ -248,7 +246,6 @@ class MainPage extends React.Component {
                         <Button variant="contained" color="primary" onClick={this.handleVote2}>
                             VOTE
                     </Button>
-
                     </Link>
                 </div>
 

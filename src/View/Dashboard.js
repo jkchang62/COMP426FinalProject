@@ -1,8 +1,6 @@
 import React from 'react';
 import './Dashboard.css'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import PrimarySearchAppBar from '../Components/PrimarySearchAppBar';
-import SignOutEvent from '../Components/signOut'
 import { withFirebase } from '../Components/index';
 import firebase from 'firebase';
 import { CardMedia, CardHeader, Button, Card, Grid } from '@material-ui/core';
@@ -78,11 +76,11 @@ class Dashboard extends React.Component {
 
     render() {
 
+        console.log(this.state.imageurls);
         var db = firebase.firestore();
         var usersRef = db.collection("users");
 
         return (
-
             <div className="dashboard-container">
                 <div className="bio-container">
                     <div>

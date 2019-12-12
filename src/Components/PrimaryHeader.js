@@ -29,6 +29,7 @@ const SearchAppBar = () => {
                     <div className="navigation-container">
                         <div>
                             <Link to="/DashBoard"> Dashboard | </Link>
+                            <Link to="/searchpicture"> Search | </Link>
                             <Link to="/about"> About | </Link> 
                             <SignOut />
                         </div>
