@@ -20,13 +20,17 @@ const SearchAppBar = () => {
         <div className={classes.root}>
             <AppBar position="static">
                 <Toolbar>
-                    <div className = "logo-container">
-                      <img src = 'https://upload.wikimedia.org/wikipedia/en/5/5f/Project_M_logo.png' />
-                    </div>
+                    <Link to="/mainpage">
+                        <div className="logo-container">
+                            <img src='https://upload.wikimedia.org/wikipedia/en/5/5f/Project_M_logo.png' />
+                        </div>
+                    </Link>
                     
                     <div className="navigation-container">
                         <div>
-                            <Link to="/DashBoard">Dashboard | </Link>
+                            <Link to="/DashBoard"> Dashboard | </Link>
+                            <Link to="/searchpicture"> Search | </Link>
+                            <Link to="/about"> About | </Link> 
                             <SignOut />
                         </div>
                     </div>

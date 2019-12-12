@@ -7,7 +7,7 @@
     float: left;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     width: 25rem;
-    height: 30rem;
+    height: 32.5rem;
     margin-left: 8rem;
     margin-top: 2rem;
     text-align: center;
@@ -18,16 +18,6 @@
     height: 10rem;
     text-align: center;
 }
-
-/* .bio-description-container {
-    width: 20rem;
-    height: 18rem;
-
-    margin-left: 5rem;
-    margin-right: 5rem;
-
-    font-size: smaller;
-} */
 
 .liked-history-container {
     position: relative;
@@ -47,12 +37,8 @@
 }
 
 #myPics {
-    height: 30rem;
+    height: 20rem;
 }
-
-
-
-
 
 .edit {
     border: none;
