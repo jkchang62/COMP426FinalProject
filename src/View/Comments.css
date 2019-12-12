@@ -1,13 +1,13 @@
-.picture-container {
+.picture-container-1 {
     border: 1px solid black;
     width: 30rem;
     height: 20rem;
 
     position: absolute;
-    top: 60%;
+    top: 40%;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-120%, -50%);
+    transform: translate(-120%, 0%);
 }
 
 .stats-container {

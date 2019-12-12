@@ -103,7 +103,7 @@ class Comments extends React.Component {
                     </Link>
                 </div>
 
-                <div className="picture-container">
+                <div className="picture-container-1">
                     <CardMedia 
                         class = "myPics" 
                         image= {this.state.url} 
