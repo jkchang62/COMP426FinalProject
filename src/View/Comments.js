@@ -59,10 +59,11 @@ class Comments extends React.Component {
         var comment = this.state.value
         event.preventDefault();
         
+        var a = this
         image.get().then(function(doc) {
             let newcomments = doc.data().comments;
             newcomments.push({
-                user: "dan",
+                user: a.props.firebase.autho.currentUser.email,
                 text: comment
             })
             image.update({
@@ -96,7 +97,10 @@ class Comments extends React.Component {
                 </div>
 
                 <div className="picture-container">
-                    <CardMedia class = "myPics" image= {this.state.url} >
+                    <CardMedia 
+                        class = "myPics" 
+                        image= {this.state.url} 
+                        >
                     </CardMedia>
                 </div>
 
@@ -104,13 +108,18 @@ class Comments extends React.Component {
                     <h3>Title: {this.state.title}</h3>
                     <p>Dated: {this.state.dated}</p>
                     <p>Culture: {this.state.culture}</p>
-                    <p>Win Percentage: {(this.state.timesVoted/this.state.timesAppeared).toFixed(3)}</p>
+                    <p>Times Appeared: {this.state.timesAppeared}</p>
+                    <p>Times Voted: {this.state.timesVoted}</p>
+                    <p>Win Percentage: {((this.state.timesVoted/this.state.timesAppeared)*100).toFixed(1)}%</p>
                 </div>
 
                 <div className="comment-container">
-                    <ul>
+                    <ul class="w3-ul">
                         {this.state.commentArray.map(d => <li>"{d.text}" -{d.user}</li>)}
                     </ul>
+                </div>
+
+                <div className="form-container">
                     <form onSubmit={this.handleSubmit}>
                         <label>
                             Comment: 
@@ -119,8 +128,6 @@ class Comments extends React.Component {
                         <input type="submit" value="Submit" />
                     </form>
                 </div>
-
-
             </div>
 
         )

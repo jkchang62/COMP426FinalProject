@@ -27,7 +27,8 @@ class MainPage extends React.Component {
         this.render = this.render.bind(this);
         this.handleVote1 = this.handleVote1.bind(this);
         this.handleVote2 = this.handleVote2.bind(this);
-        this.counter = 0;
+        this.handleView1 = this.handleView1.bind(this);
+        this.handleView2 = this.handleView2.bind(this);
     }
 
     handleVote1() {
@@ -55,7 +56,7 @@ class MainPage extends React.Component {
         }, { merge: true });
 
         var usersRef = db.collection("users");
-        /*var query = usersRef.where("email", "==", this.props.firebase.autho.currentUser.email);
+        var query = usersRef.where("email", "==", this.props.firebase.autho.currentUser.email);
 
         query.get().then(function (querySnapshot) {
 
@@ -69,7 +70,7 @@ class MainPage extends React.Component {
                 likedImages : likedImages,
                 },{merge : true});
                 
-            });*/
+            });
         }
 
 
@@ -99,7 +100,7 @@ class MainPage extends React.Component {
         }, { merge: true })
 
         var usersRef = db.collection("users");
-        /*var query = usersRef.where("email", "==", this.props.firebase.autho.currentUser.email);
+        var query = usersRef.where("email", "==", this.props.firebase.autho.currentUser.email);
 
         query.get().then(function (querySnapshot) {
 
@@ -113,10 +114,20 @@ class MainPage extends React.Component {
                 likedImages : likedImages,
                 },{merge : true});
                 
-            });*/
+            });
 
     }
 
+    handleView1() {
+        localStorage.setItem('currentImage', this.state.imageID1)
+    }
+    handleView2() {
+        localStorage.setItem('currentImage', this.state.imageID2)
+    }
+
+    handleRefresh() {
+        window.location.reload(false);
+    }
 
     componentWillMount() {
 
@@ -192,10 +203,23 @@ class MainPage extends React.Component {
                     {"Comments: " + this.state.imagecomments1}
                 </div>
 
+                <div className="refresh-button">
+                    <Button variant="contained" color="primary" onClick={this.handleRefresh}>
+                            NEW IMAGES
+                    </Button>
+                </div>
                 <div className="vote-button-one">
-                    <Link to="/comments">
+                    <Link to="/mainpage">
                         <Button variant="contained" color="primary" onClick={this.handleVote1}>
                             VOTE
+                    </Button>
+                    </Link>
+                </div>
+
+                <div className="view-button-one">
+                    <Link to="/comments">
+                        <Button variant="contained" color="primary" onClick={this.handleView1}>
+                            ABOUT
                     </Button>
                     </Link>
                 </div>
@@ -209,11 +233,19 @@ class MainPage extends React.Component {
                 </div>
 
                 <div className="vote-button-two">
-                    <Link to="/comments">
+                    <Link to="/mainpage">
                         <Button variant="contained" color="primary" onClick={this.handleVote2}>
                             VOTE
                     </Button>
 
+                    </Link>
+                </div>
+
+                <div className="view-button-two">
+                    <Link to="/comments">
+                        <Button variant="contained" color="primary" onClick={this.handleView2}>
+                            ABOUT
+                    </Button>
                     </Link>
                 </div>
             </div>
