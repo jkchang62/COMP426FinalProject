@@ -86,6 +86,7 @@ class MainPage extends React.Component {
         let likedImages = [];
 
         this.props.firebase.state.commentImageURL = this.state.imageurl2;
+        this.props.firebase.state.commentImageTitle = this.state.imagetitle1;
         this.props.firebase.state.currentImageComments = this.state.imagecomments2;
         this.props.firebase.state.currentImageID = this.state.imageID2;
         localStorage.setItem('currentImage', this.state.imageID2)
