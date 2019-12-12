@@ -25,6 +25,7 @@ class Comments extends React.Component {
             commentArray: [],
             url: '',
             value: '',
+            artist: '',
             title: '',
             culture: '',
             dated: '',
@@ -44,6 +45,7 @@ class Comments extends React.Component {
                 commentArray : doc.data().comments,
                 url : doc.data().url,
                 title : doc.data().title,
+                artist : doc.data().artist,
                 culture : doc.data().culture,
                 dated : doc.data().dated,
                 timesAppeared : doc.data().timesAppeared,
@@ -111,6 +113,7 @@ class Comments extends React.Component {
 
                 <div className="stats-container">
                     <h3>Title: {this.state.title}</h3>
+                    <p>Artist: {this.state.artist}</p>
                     <p>Dated: {this.state.dated}</p>
                     <p>Culture: {this.state.culture}</p>
                     <p>Times Appeared: {this.state.timesAppeared}</p>
