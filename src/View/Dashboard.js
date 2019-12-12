@@ -21,6 +21,7 @@ class Dashboard extends React.Component {
         super(props);
         this.state = {
             imageurls: null,
+            imagetitles: null,
             name: null,
             username: null,
             password: null,
@@ -35,6 +36,7 @@ class Dashboard extends React.Component {
         window.localStorage.setItem('uid',this.props.firebase.autho.currentUser.uid);
 
         let imageurls = [];
+        let imagetitles = [];
         let name = "";
         let username = "";
         let password = "";
@@ -52,7 +54,7 @@ class Dashboard extends React.Component {
                 let htmlBoi = '';
                 let temp = doc.data().likedImages;
                 for (let i = 0; i < temp.length; i++) {
-                    let temp2 = <Card><CardMedia id="myPics" image={temp[i]}> </CardMedia> </Card>
+                    let temp2 = <Card><CardMedia id="myPics" image={temp[i].url}>{temp[i].title} </CardMedia> </Card>
                     htmlBoi = temp2;
                     imageurls.push(htmlBoi);
                 }
