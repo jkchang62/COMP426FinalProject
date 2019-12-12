@@ -47,7 +47,6 @@ class PasswordForgetForm extends React.Component {
     }
 
     render() {
-
         const {
             email,
             error,

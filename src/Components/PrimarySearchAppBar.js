@@ -17,7 +17,8 @@ import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
 
 /**
- * Component for the search bar and header 
+ * Moved ALL content to PrimaryHeader.js for more accessibility and ease. 
+ * !SHOULD NO LONGER USE!
  */
 
 
@@ -153,15 +154,15 @@ export default function PrimarySearchAppBar() {
             </MenuItem>
             <MenuItem onClick={handleProfileMenuOpen}>
                 <Link to="/dashboard">
-                <IconButton
-                    aria-label="account of current user"
-                    aria-controls="primary-search-account-menu"
-                    aria-haspopup="true"
-                    color="inherit"
-                >
+                    <IconButton
+                        aria-label="account of current user"
+                        aria-controls="primary-search-account-menu"
+                        aria-haspopup="true"
+                        color="inherit"
+                    >
                         <AccountCircle />
-                </IconButton>
-                    </Link>
+                    </IconButton>
+                </Link>
                 <p>Profile</p>
             </MenuItem>
         </Menu>
@@ -191,8 +192,9 @@ export default function PrimarySearchAppBar() {
                     </div>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
-                        <Navigation />
-                        <AccountCircle />
+
+                    <Navigation />
+                    <AccountCircle />
 
                     </div>
                     <div className={classes.sectionMobile}>

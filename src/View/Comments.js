@@ -56,7 +56,7 @@ class Comments extends React.Component {
     }
 
     handleChange(event) {
-        this.setState({value: event.target.value});
+        this.setState({ value: event.target.value });
     }
     handleSubmit(event) {
         var db = firebase.firestore();
@@ -74,7 +74,7 @@ class Comments extends React.Component {
             image.update({
                 comments: newcomments
             })
-        }).catch(function(error) {
+        }).catch(function (error) {
             console.log("Error getting document:", error);
         })
 
@@ -90,7 +90,6 @@ class Comments extends React.Component {
     render() {
         return (
             <div>
-                <PrimarySearchAppBar />
 
                 <div className="back-button">
                     <Link to="/mainpage">
@@ -128,7 +127,7 @@ class Comments extends React.Component {
                 <div className="form-container">
                     <form class={this.state.signedIn} onSubmit={this.handleSubmit}>
                         <label>
-                            Comment: 
+                            Comment:
                             <input type="text" onChange={this.handleChange} />
                         </label>
                         <input type="submit" value="Submit" />

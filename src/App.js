@@ -11,10 +11,7 @@ import MainPage from './View/MainPage';
 import AboutPage from './View/AboutPage';
 import { Route } from 'react-router';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { tsConstructorType } from '@babel/types';
-
 import {highAuthentication} from './Components/sessions'
-import Navigation from './Components/Navigation';
 import PrimaryHeader from './Components/PrimaryHeader.js';
 
 
@@ -24,7 +21,7 @@ function App() {
         <div className="App">
           <header className="App-header">
             <Router>
-            {/* <PrimaryHeader /> */}
+            <PrimaryHeader />
             <hr/>
               <Route path={"/mainpage"} component={MainPage} />
               <Route path={"/dashboard"} component={Dashboard} />

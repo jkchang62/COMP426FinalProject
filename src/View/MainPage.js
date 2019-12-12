@@ -208,10 +208,8 @@ class MainPage extends React.Component {
     }
 
     render() {
-
         return (
             <div>
-                <PrimarySearchAppBar />
                 <div className="picture-container-one">
                     <CardMedia class="myPics">
                         <img src={this.state.imageurl1} class="pic"/>

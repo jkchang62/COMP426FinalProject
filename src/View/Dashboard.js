@@ -84,9 +84,6 @@ class Dashboard extends React.Component {
         return (
 
             <div className="dashboard-container">
-                <PrimarySearchAppBar />
-
-
                 <div className="bio-container">
                     <div>
                         <AccountCircleIcon id="profpic" fontSize="inherit" />
