@@ -1,5 +1,6 @@
 import app from 'firebase/app';
 import 'firebase/auth';
+import firebase from 'firebase';
 
 
 const firebaseConfig = {
@@ -33,6 +34,12 @@ class Firebase {
     UserPasswordUpdate = password => this.autho.currentUser.updatePassword(password);
 
     StateChange = () => this.autho.onAuthStateChanged((user) => {if(user){console.log('helloWOrld')}});
+
+    DeleteUser = () => this.autho.currentUser.delete().then(function(){
+      var db = firebase.firestore();
+      var usersRef = db.collection("users");
+      usersRef.doc(window.localStorage.uid).delete();
+    });
 
 }
 

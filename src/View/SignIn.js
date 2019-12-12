@@ -80,7 +80,7 @@ class SignIn extends React.Component {
                         </Grid>
 
                         <Grid item>
-                            <TextField name="email" className="user-input" label="Username" onChange={this.onChange} variant="outlined"> </TextField>
+                            <TextField name="email" className="user-input" label="Email" onChange={this.onChange} variant="outlined"> </TextField>
                         </Grid>
                         <Grid item>
                             <TextField name="password" className="password-input" label="Password" onChange={this.onChange} variant="outlined"> </TextField>

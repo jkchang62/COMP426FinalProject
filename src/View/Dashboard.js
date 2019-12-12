@@ -7,6 +7,7 @@ import { withFirebase } from '../Components/index';
 import firebase from 'firebase';
 import { CardMedia, CardHeader, Button, Card, Grid } from '@material-ui/core';
 import { Link, withRouter } from 'react-router-dom';
+import DeleteUser1 from '../Components/Delete';
 
 /**
  * View for the dashboard that will be the primary page of the website. Holds two pictures, a vote and comment button, and 
@@ -20,6 +21,7 @@ class Dashboard extends React.Component {
         super(props);
         this.state = {
             imageurls: null,
+            imagetitles: null,
             name: null,
             username: null,
             password: null,
@@ -31,7 +33,10 @@ class Dashboard extends React.Component {
 
     componentWillMount() {
 
+        window.localStorage.setItem('uid',this.props.firebase.autho.currentUser.uid);
+
         let imageurls = [];
+        let imagetitles = [];
         let name = "";
         let username = "";
         let password = "";
@@ -40,7 +45,6 @@ class Dashboard extends React.Component {
 
         var db = firebase.firestore();
         var usersRef = db.collection("users");
-        var imageRef = db.collection("images");
 
         var query = usersRef.where("email", "==", this.props.firebase.autho.currentUser.email);
 
@@ -50,7 +54,7 @@ class Dashboard extends React.Component {
                 let htmlBoi = '';
                 let temp = doc.data().likedImages;
                 for (let i = 0; i < temp.length; i++) {
-                    let temp2 = <Card><CardMedia id="myPics" image={temp[i]}> </CardMedia> </Card>
+                    let temp2 = <Card><CardMedia id="myPics" image={temp[i].url}>{temp[i].title} </CardMedia> </Card>
                     htmlBoi = temp2;
                     imageurls.push(htmlBoi);
                 }
@@ -74,6 +78,9 @@ class Dashboard extends React.Component {
 
     render() {
 
+        var db = firebase.firestore();
+        var usersRef = db.collection("users");
+
         return (
 
             <div className="dashboard-container">
@@ -85,7 +92,6 @@ class Dashboard extends React.Component {
                         <AccountCircleIcon id="profpic" fontSize="inherit" />
 
                     </div>
-                    
                 
                     <div>
                         <h2>{this.state.name}</h2>

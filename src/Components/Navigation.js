@@ -19,7 +19,13 @@ const NavAuth = () => (
             <Link to="/DashBoard">Dashboard</Link>
         </li>
         <li>
-        <SignOutEvent />
+            <Link to="/MainPage">Home</Link>
+        </li>
+        <li>
+            <Link to="/about">About the Art</Link>
+        </li>
+        <li>
+        <SignOutEvent/>
         </li>
     </ul>
 );

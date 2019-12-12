@@ -40,17 +40,38 @@
     max-width: 100%;
 }
 
+.refresh-button {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%); 
+}
 .vote-button-one {
     position: absolute;
     top: 80%;
-    left: 25%;
+    left: 20%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%); 
+}
+.view-button-one {
+    position: absolute;
+    top: 80%;
+    left: 33%;
     margin-right: -50%;
     transform: translate(-50%, -50%); 
 }
 .vote-button-two {
     position: absolute;
     top: 80%;
-    left: 75%;
+    left: 70%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%); 
+}
+.view-button-two {
+    position: absolute;
+    top: 80%;
+    left: 80%;
     margin-right: -50%;
     transform: translate(-50%, -50%); 
 }
