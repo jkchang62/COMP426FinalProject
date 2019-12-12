@@ -90,7 +90,7 @@ class MainPage extends React.Component {
         var imageRef = db.collection("images");
 
 
-        let numImages = 5;
+        let numImages = 50;
 
         var query1 = imageRef.where("randomIndex", "==", Math.floor(Math.random() * Math.floor(numImages)))
 
@@ -144,7 +144,8 @@ class MainPage extends React.Component {
             <div>
                 <PrimarySearchAppBar />
                 <div className="picture-container-one">
-                    <CardMedia class="myPics" image={this.state.imageurl1}>
+                    <CardMedia class="myPics">
+                        <img src={this.state.imageurl1} class="pic"/>
                     </CardMedia>
                     {"Votes: " + this.state.imagevotes1}
                     {"Winning Percentage: " + (this.state.imagevotes1 / this.state.imageappearances1) * 100 + "%"}
@@ -160,7 +161,8 @@ class MainPage extends React.Component {
                 </div>
 
                 <div className="picture-container-two">
-                    <CardMedia class="myPics" image={this.state.imageurl2}>
+                    <CardMedia class="myPics">
+                        <img src={this.state.imageurl2} class="pic"/>
                     </CardMedia>
                     {"Votes: " + this.state.imagevotes2}
                     {"Winning Percentage: " + (this.state.imagevotes2 / this.state.imageappearances2) * 100 + "%"}

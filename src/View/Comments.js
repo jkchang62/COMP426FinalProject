@@ -33,7 +33,7 @@ class Comments extends React.Component {
     }
     /*getComments() {
         // Build an array of items
-        let array = [];
+        let array = [];prim
         for(let i = 0; i < this.state.commentArray; i++) {
             let string = "User: " + this.state.commentArray[i].user + "\n" + this.this.state.commentArray[i].text
           array.push(
@@ -71,6 +71,7 @@ class Comments extends React.Component {
         })
         //alert('A comment was submitted: ' + this.props.firebase.state.currentImageID);
     }
+
     render() {
         //console.log(this.state.commentArray)
         const listItems = this.state.commentArray.map((d) => <li key={d.user}>{d.user}</li>)
@@ -105,8 +106,6 @@ class Comments extends React.Component {
                         <input type="submit" value="Submit" />
                     </form>
                 </div>
-
-
             </div>
 
         )
