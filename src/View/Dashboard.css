@@ -5,47 +5,41 @@
 .bio-container {
     position: relative;
     float: left;
-
-    border: 0.25rem solid black;
-    width: 30rem;
-    height: 40rem;
-    margin: 1rem;
-}
-
-.profile-picture-container {
-    width: 20rem;
-    height: 15rem;
-    
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 25rem;
+    height: 30rem;
+    margin-left: 8rem;
     margin-top: 2rem;
-    margin-left: 5rem;
-    margin-right: 5rem;
-
     text-align: center;
-    font-size: 12rem;
 }
 
-.bio-description-container {
-    border: 0.25rem solid black;
+#profpic {
+    width: 15rem;
+    height: 10rem;
+    text-align: center;
+}
+
+/* .bio-description-container {
     width: 20rem;
     height: 18rem;
 
-    margin-top: 2rem;
     margin-left: 5rem;
     margin-right: 5rem;
 
     font-size: smaller;
-}
+} */
 
 .liked-history-container {
     position: relative;
     float: right;
 
-    border: 0.25rem solid black;
     width: 40rem;
-    height: 40rem;
-    margin: 1rem;
+    height: 37rem;
+    margin: 2rem;
 
     overflow: scroll;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
 }
 
 .liked-history-title {
@@ -54,4 +48,21 @@
 
 #myPics {
     height: 30rem;
+}
+
+
+
+
+
+.edit {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
 }

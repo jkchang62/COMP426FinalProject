@@ -54,6 +54,7 @@ class Comments extends React.Component {
             signedIn : this.props.firebase.autho.currentUser != null ? "show" : "hide"
         })
     }
+
     handleChange(event) {
         this.setState({value: event.target.value});
     }
@@ -85,6 +86,7 @@ class Comments extends React.Component {
             })
         })
     }
+
     render() {
         return (
             <div>

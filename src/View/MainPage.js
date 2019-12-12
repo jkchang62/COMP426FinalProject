@@ -213,7 +213,8 @@ class MainPage extends React.Component {
             <div>
                 <PrimarySearchAppBar />
                 <div className="picture-container-one">
-                    <CardMedia class="myPics" image={this.state.imageurl1}>
+                    <CardMedia class="myPics">
+                        <img src={this.state.imageurl1} class="pic"/>
                     </CardMedia>
                 </div>
 
@@ -239,7 +240,8 @@ class MainPage extends React.Component {
                 </div>
 
                 <div className="picture-container-two">
-                    <CardMedia class="myPics" image={this.state.imageurl2}>
+                    <CardMedia class="myPics">
+                        <img src={this.state.imageurl2} class="pic"/>
                     </CardMedia>
                 </div>
 

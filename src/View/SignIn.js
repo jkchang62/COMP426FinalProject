@@ -11,7 +11,7 @@ import {withFirebase} from '../Components/index';
 
 
 const SignInPage = () => (
-        <SignInForm />
+     <SignInForm />
 )
 
 const INITIAL_STATE = {
@@ -63,8 +63,6 @@ class SignIn extends React.Component {
 
         return (
             <div>
-                <PrimaryHeader />
-
                 <div className="signin-box">
                     <div className="signin-box-header" />
                     <Grid

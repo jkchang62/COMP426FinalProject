@@ -84,35 +84,27 @@ class Dashboard extends React.Component {
         return (
 
             <div className="dashboard-container">
-
                 <PrimarySearchAppBar />
 
+
                 <div className="bio-container">
-                    <div className="profile-picture-container">
-                        <AccountCircleIcon fontSize="inherit" />
+                    <div>
+                        <AccountCircleIcon id="profpic" fontSize="inherit" />
 
                     </div>
-                    <Grid item>
-                        <Link to='/update'>
-                            <Button variant="contained" color="primary" onClick={this.handleEdit}> Edit Profile </Button>
-                        </Link>
-                    </Grid>
-
-                    <Grid item>
-                        <Link to='/MainPage'>
-                            <DeleteUser1 />
-                        </Link>
-                    </Grid>
-
-
-
-                    <div className="bio-description-container">
-                        <p>Name: {this.state.name}</p>
-                        <p>Bio: {this.state.bio}</p>
-                        ACCOUNT INFO:
+                
+                    <div>
+                        <h2>{this.state.name}</h2>
+                        <p class="bio">{this.state.bio}</p>
+                    
                     <p>Username: {this.state.username}</p>
                         <p>Email: {this.state.email}</p>
                         <p>Password: {this.state.password}</p>
+                        <Grid item>
+                            <Link to='/update'>
+                                <Button class="edit" variant="contained" color="primary" onClick={this.handleEdit}> Edit Profile </Button>
+                            </Link>
+                        </Grid>
 
                     </div>
 
