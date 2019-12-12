@@ -9,16 +9,16 @@ export default class SearchPicture extends React.Component {
         super(props);
 
         this.state = {
-            url: "https://orangemushroom.files.wordpress.com/2017/09/maplestory-256x256.png?w=256",
+            pictures: <div className = "picture"> <img src = "https://orangemushroom.files.wordpress.com/2017/09/maplestory-256x256.png?w=256" /> </div>,
 
         }
 
         this.renderNewPicture = this.renderNewPicture.bind(this);
     }
 
-    renderNewPicture(newURL) {
+    renderNewPicture(newPictures) {
         this.setState({
-            url: newURL
+            pictures: newPictures
         })
     }
 
@@ -29,7 +29,7 @@ export default class SearchPicture extends React.Component {
                     <SearchBar renderNewPicture={this.renderNewPicture} titles={this.state.allImages} />
                 </div>
                 <div id="search-picture-container">
-                    <img src={this.state.url} />
+                    {this.state.pictures}
                 </div>
             </div>
         );
